@@ -6,9 +6,10 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-azure-northcentral-b.cloudapp.net:3306/mummpp1</property>
-    <property name="hibernate.connection.username">b2f65df184b356</property>
-    <property name="hibernate.connection.password">7f023bf0</property>
+    <property name="hibernate.connection.url">jdbc:mysql://107.174.239.78:3306/dzungdb</property>
+    <property name="hibernate.connection.username">dzung</property>
+    <property name="hibernate.connection.password">pA55hhh000</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
   </session-factory>
 </hibernate-configuration>
