@@ -4,12 +4,16 @@
   <artifactId>MUM_MPP_EventManagement</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-   	 	<dependency>
-   			<groupId>javax.persistence</groupId>
-   			<artifactId>persistence-api</artifactId>
-   			<version>1.0.2</version>
-   			<scope>provided</scope>
-		</dependency>
+  	<dependency>
+    	<groupId>org.eclipse.persistence</groupId>
+    	<artifactId>eclipselink</artifactId>
+    	<version>2.5.0</version>
+	</dependency>
+	<dependency>
+	  	<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>6.0.5</version>
+	</dependency>
   </dependencies>
   
   <build>
