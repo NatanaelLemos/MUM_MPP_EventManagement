@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import edu.mum.eventmanagement.HibernateUtil;
 import edu.mum.eventmanagement.models.Event;
 
 public class EventRepository implements IRepository<Event>{

@@ -1,4 +1,4 @@
-package edu.mum.eventmanagement;
+package edu.mum.eventmanagement.repositories;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

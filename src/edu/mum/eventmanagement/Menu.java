@@ -3,17 +3,25 @@ package edu.mum.eventmanagement;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.application.Platform;
 
-@SuppressWarnings("restriction")
-public class Menu extends WindowBase {
+public class Menu extends Application {
 
 	public static void main(String[] args) {
 		Application.launch(Menu.class, args);
 	}
 	
-	public Menu() {
-		super("Menu", "Event Management System", 300, 200, true);
+	@Override
+	public void start(Stage stage) throws Exception {
+		Window mainStage = new Window("menu", "Event Management System", 1000, 700 );
+		stage.setMaximized(true);
+		stage.setScene(mainStage.getScene());
+		stage.setTitle(mainStage.getTitle());
+		stage.show();
 	}
 	
     @FXML protected void handleCloseAction(ActionEvent event) {
@@ -21,7 +29,12 @@ public class Menu extends WindowBase {
     }
     
     @FXML protected void handleAboutAction(ActionEvent event) {
-    	About about = new About();
+    	Window about = new Window("about", "About", 300, 500);
     	about.show();
+    }
+    
+    @FXML protected void handleCreateEventAction(ActionEvent event) {
+    	Window createEvent = new Window("event/createEvent", "New Event", 840, 500);
+    	createEvent.show();
     }
 }
