@@ -6,5 +6,6 @@ import javax.persistence.*;
 public class Event {
 	@Id
 	@GeneratedValue
+	@Column()
 	private int id;
 }

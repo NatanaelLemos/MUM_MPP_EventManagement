@@ -1,3 +1,13 @@
 .root{
 	-fx-background-color: #f5f5f5;
 }
+
+.menu-bar{
+	-fx-border-color: #f5f5f5 #f5f5f5 #d9e0ff #f5f5f5;
+ 	-fx-border-width: 1;
+}
+
+.menu-bar, .menu-bar *{
+	-fx-background-color: #e5e5e5;
+	-fx-text-fill: #333;
+}

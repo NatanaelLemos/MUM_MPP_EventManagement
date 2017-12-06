@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public abstract class WindowBase extends Application {
 	
 	private String fXmlFile;
@@ -13,7 +14,7 @@ public abstract class WindowBase extends Application {
 	private int width;
 	private int height;
 	private Boolean isMaximized;
-	
+		
 	WindowBase(String fXmlFile, String title, int width, int height){
 		this(fXmlFile, title, width, height, false);
 	}
@@ -35,7 +36,7 @@ public abstract class WindowBase extends Application {
 		currentScene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
         
 		stage.setScene(currentScene);
-		stage.setMaximized(isMaximized);
+		stage.setMaximized(isMaximized);		
 		stage.show();
 	}
 

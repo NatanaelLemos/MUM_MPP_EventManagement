@@ -2,14 +2,18 @@ package edu.mum.eventmanagement.repositories;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import edu.mum.eventmanagement.HibernateUtil;
 import edu.mum.eventmanagement.models.Event;
 
 public class EventRepository implements IRepository<Event>{
 
-	@SuppressWarnings("unchecked")
+	EntityManager entityManager = HibernateUtil.getEntityManager();
+	
 	@Override
 	public List<Event> getAll() {
-		return (List<Event>)HibernateUtil.getEntityManager().createQuery("SELECT * FROM Event").getResultList();
+		return (List<Event>)entityManager.createQuery("SELECT e from Event e", Event.class).getResultList();
 	}
 	
 }
