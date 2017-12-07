@@ -18,14 +18,18 @@ public class Event {
 	
 	private EventState state;
 	
+	@ManyToOne
+	private Location location;
+	
 	Event(){
 		//This constructor is used only because Hibernate need an empty constructor to build the objects
 	}
 	
-	public Event(String name, Date date, Date dueDate) {
+	public Event(String name, Date date, Date dueDate, Location location) {
 		this.name = name;
 		this.date = date;
 		this.dueDate = dueDate;
+		this.location = location;
 		this.state = EventState.pending;
 	}
 }

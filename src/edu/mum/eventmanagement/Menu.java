@@ -29,12 +29,12 @@ public class Menu extends Application {
     }
     
     @FXML protected void handleAboutAction(ActionEvent event) {
-    	Window about = new Window("about", "About", 300, 500);
+    	Window about = new Window("about", "About", 400, 500);
     	about.show();
     }
     
     @FXML protected void handleCreateEventAction(ActionEvent event) {
-    	Window createEvent = new Window("event/createEvent", "New Event", 840, 500);
+    	Window createEvent = new Window("createEvent", "New Event", 740, 410);
     	createEvent.show();
     }
 }
