@@ -34,6 +34,10 @@ public class Event {
 		this.state = EventState.pending;
 	}
 	
+	public String getName(){
+		return this.name;
+	}
+	
 	public List<Event> getListEvent(){
 		EventRepository er = new EventRepository();
 		events = er.getAll();

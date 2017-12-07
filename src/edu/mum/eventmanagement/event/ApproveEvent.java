@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.EventState;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
@@ -31,7 +33,15 @@ public class ApproveEvent implements Initializable {
 		events.add(new Event("asdf",new Date(),new Date()));
 		System.out.print("ApproveEvent1");
 		//EventableId.getItems().setAll(FXCollections.observableArrayList(events));
+		//EventableId.getItems().add(new Event("asdf",new Date(),new Date()));
+		//EventableId.getItems().addAll(FXCollections.observableArrayList(events));
 		
+		//ObservableList<Event> data = EventableId.getItems();
+        //data.add(new Event(firstNameField.getText(),
+        //    lastNameField.getText(),
+        //    emailField.getText()
+        //));
+		//tableView.getItems()
 		//EventableId.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		//EventableId.getColumns().get(0).prefWidthProperty().bind(EventableId.widthProperty().multiply(0.33));    // 33% for id column size
 		//EventableId.getColumns().get(1).prefWidthProperty().bind(EventableId.widthProperty().multiply(0.33));   // 33% for dt column size

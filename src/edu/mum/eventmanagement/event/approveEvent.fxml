@@ -8,6 +8,16 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
+<?import fxmltableview.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane id="AnchorPane" fx:id="approveEventFormId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.event.ApproveEvent">
   <children>
     <Pane layoutX="14.0" layoutY="14.0" prefHeight="263.0" prefWidth="365.0">
@@ -19,7 +29,7 @@
         </Label>
         <TableView id="EventableId" layoutX="14.0" layoutY="63.0" prefHeight="200.0" prefWidth="318.0">
           <columns>
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="115.0" text="Event Name" fx:id="name" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="115.0" text="name" fx:id="name" />
             
           </columns>
         </TableView>
@@ -27,3 +37,4 @@
     </Pane>
   </children>
 </AnchorPane>
+
