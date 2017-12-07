@@ -38,6 +38,18 @@ public class Event {
 		return this.name;
 	}
 	
+	public Date getDate() {
+		return this.date;
+	}
+	
+	public Date getDueDate() {
+		return this.dueDate;
+	}
+	
+	public EventState getState() {
+		return this.state;
+	}
+	
 	public List<Event> getListEvent(){
 		EventRepository er = new EventRepository();
 		events = er.getAll();
