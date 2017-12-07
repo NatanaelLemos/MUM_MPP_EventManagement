@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public abstract class Activity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(length=255)

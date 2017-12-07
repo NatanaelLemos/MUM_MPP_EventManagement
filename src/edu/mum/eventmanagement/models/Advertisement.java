@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Advertisement {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private AdvertisementType type;

@@ -2,6 +2,8 @@ package edu.mum.eventmanagement.repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import edu.mum.eventmanagement.models.Location;
 
 public class LocationRepository implements IRepository<Location>{
@@ -10,14 +12,8 @@ public class LocationRepository implements IRepository<Location>{
 	
 	@Override
 	public List<Location> getAll() {
-		return entityManager.createQuery("SELECT l from Location", Location.class).getResultList();
+		TypedQuery<Location> query = entityManager.createQuery("SELECT l from Location l", Location.class);
+		return query.getResultList();
 	}
 
 }
-
-
-/*
-Database: mpp1
-Username: mpp1
-Email: s2412010@mvrht.net
- */

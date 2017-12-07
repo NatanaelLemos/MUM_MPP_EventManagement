@@ -4,7 +4,7 @@ import javax.persistence.*;
 @Entity
 public class Ingredient {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(length=255)

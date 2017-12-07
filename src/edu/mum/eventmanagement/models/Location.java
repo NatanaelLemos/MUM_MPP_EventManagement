@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Location {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(length =  255)
@@ -17,4 +17,15 @@ public class Location {
 	
 	@OneToMany
 	private List<Event> events;
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	Location(){
+	}
+	
+	public Location(String name) {
+		this.name = name;
+	}
 }

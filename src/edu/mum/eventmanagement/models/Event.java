@@ -7,13 +7,16 @@ import javax.persistence.*;
 @Entity
 public class Event {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(length=50)
 	private String name;
 	
+	@Temporal(TemporalType.DATE)
 	private Date date;
+	
+	@Temporal(TemporalType.DATE)
 	private Date dueDate;
 	
 	private EventState state;
