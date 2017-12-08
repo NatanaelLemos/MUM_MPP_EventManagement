@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.EventState;
+import edu.mum.eventmanagement.repositories.EventRepository;
 import fxmltableview.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,8 +27,13 @@ public class ApproveEvent implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub		
+		
 		ObservableList<Event> data = tableView.getItems();
-		data.add(new Event("sdf", new Date(), new Date()));	
+		data.add(new Event("event 1", new Date(), new Date()));	
 		System.out.print("ApproveEvent");
+		
+		EventRepository er = new EventRepository();
+		List<Event> qwe = er.getAll();
+		//System.out.println(qwe);
 	}
 }
