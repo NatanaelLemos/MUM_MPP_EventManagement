@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.EventState;
 import edu.mum.eventmanagement.repositories.EventRepository;
-import fxmltableview.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,8 +31,8 @@ public class ApproveEvent implements Initializable {
 		data.add(new Event("event 1", new Date(), new Date()));	
 		System.out.print("ApproveEvent");
 		
-		EventRepository er = new EventRepository();
-		List<Event> qwe = er.getAll();
+		//EventRepository er = new EventRepository();
+		//er.getAll().size();
 		//System.out.println(qwe);
 	}
 }
