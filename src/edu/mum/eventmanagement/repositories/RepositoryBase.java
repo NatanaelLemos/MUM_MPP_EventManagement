@@ -16,6 +16,12 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 	}
 	
 	@Override
+	public TEntity get(int id) {
+		EntityManager entityManager = HibernateUtil.getEntityManager();
+		return entityManager.find(type, id);	
+	}
+	
+	@Override
 	public List<TEntity> getAll() {
 		EntityManager entityManager = HibernateUtil.getEntityManager();
 		
