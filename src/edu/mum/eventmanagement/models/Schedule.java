@@ -15,6 +15,8 @@ public class Schedule {
 	@Column(length=8)
 	private String timeEnd;
 	
+	private ScheduleState state;
+	
 	@ManyToOne
 	private Activity activity;
 	

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import edu.mum.eventmanagement.repositories.EventRepository;
+
 @Entity
 public class Event {
 	@Id
@@ -22,6 +24,8 @@ public class Event {
 	private Date dueDate;
 	
 	private EventState state;
+	List<Event> events;
+	
 	
 	@ManyToOne
 	private Location location;
@@ -31,18 +35,13 @@ public class Event {
 	
 	@OneToMany
 	private List<Schedule> schedules;
-	
-	public String getName() {
-		return this.name;
-	}
+
 	
 	public Date getDate() {
 		return this.date;
 	}
 	
-	public Date getDueDate() {
-		return this.dueDate;
-	}
+
 	
 	public Location getLocation() {
 		return this.location;
@@ -95,5 +94,25 @@ public class Event {
 		this.dueDate = dueDate;
 		this.location = location;
 		this.state = EventState.pending;
+	}
+	
+	public String getName(){
+		return this.name;
+	}
+	
+
+	
+	public Date getDueDate() {
+		return this.dueDate;
+	}
+	
+	public EventState getState() {
+		return this.state;
+	}
+	
+	public List<Event> getListEvent(){
+		EventRepository er = new EventRepository();
+		events = er.getAll();
+		return events;
 	}
 }
