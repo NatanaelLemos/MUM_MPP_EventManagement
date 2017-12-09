@@ -102,16 +102,6 @@ public class FormattedTableCellFactory<S, T> implements Callback<TableColumn<S, 
                 break;
         }
         
-//        cell.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                if (event.getClickCount() > 1) {
-//                    
-//                	System.out.println("asdfasdf");
-//                }
-//            }
-//        });
-        
         return cell;
     }
 }

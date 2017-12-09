@@ -11,8 +11,24 @@ public class Schedule {
 	private int id;
 	
 	private Period timeStart;
+	public Period getTimeStart() {
+		return timeStart;
+	}
+
+	public void setTimeStart(Period timeStart) {
+		this.timeStart = timeStart;
+	}
+
 	private Period timeEnd;
 	
+	public Period getTimeEnd() {
+		return timeEnd;
+	}
+
+	public void setTimeEnd(Period timeEnd) {
+		this.timeEnd = timeEnd;
+	}
+
 	@OneToMany
 	private List<Activity> activities;
 	
@@ -21,5 +37,10 @@ public class Schedule {
 	
 	public Schedule() {
 		activities = new ArrayList<Activity>();
+	}
+	
+	public Schedule(Period timeStart, Period timeEnd) {
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
 	}
 }
