@@ -53,9 +53,7 @@ public class Event {
 		return this.name;
 	}
 	
-	public Date getDate() {
-		return this.date;
-	}
+
 	
 	public Date getDueDate() {
 		return this.dueDate;
