@@ -45,6 +45,11 @@
         			<mainClass>your.package.with.Launcher</mainClass>
     			</configuration>
 			</plugin>
+      		<plugin>
+    			<groupId>com.sendgrid</groupId>
+    			<artifactId>sendgrid-java</artifactId>
+    			<version>4.0.1</version>
+			</plugin>
     	</plugins>
 	</build>
 </project>
