@@ -6,7 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Pane;
 
 public class Window extends Stage {
 
@@ -32,7 +35,6 @@ public class Window extends Stage {
 		}
 	}
 
-	@SuppressWarnings("restriction")
 	private void customizeRoot(Parent parent) {
 		for (Node node : parent.getChildrenUnmodifiable()) {
 			if (node instanceof Button) {
@@ -42,5 +44,25 @@ public class Window extends Stage {
 				customizeRoot((Parent) node);
 			}
 		}
+	}
+	
+	static void close(Pane windowToClose) {
+		windowToClose.getScene().getWindow().hide();
+	}
+	
+	static void Alert(String title, String message) {
+		showAlert(AlertType.INFORMATION, title, message);
+	}
+	
+	static void Error(String title, String message) {
+		showAlert(AlertType.ERROR, title, message);
+	}
+	
+	private static void showAlert(AlertType type, String title, String message) {
+		javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+		alert.setTitle(title);
+		alert.setHeaderText(title);
+		alert.setContentText(message);
+		alert.showAndWait();
 	}
 }

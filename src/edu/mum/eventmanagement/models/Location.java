@@ -25,7 +25,8 @@ public class Location {
 	Location(){
 	}
 	
-	public Location(String name) {
+	public Location(String name, String address) {
 		this.name = name;
+		this.address = address;
 	}
 }

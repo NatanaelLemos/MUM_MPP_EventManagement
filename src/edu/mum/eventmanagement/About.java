@@ -8,6 +8,6 @@ public class About {
     @FXML private Pane aboutPane;
 	
     @FXML protected void handleCloseAction(ActionEvent event) {
-    	aboutPane.getScene().getWindow().hide();
+    	Window.close(aboutPane);
     }
 }
