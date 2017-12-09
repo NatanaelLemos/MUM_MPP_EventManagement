@@ -24,6 +24,14 @@ public class Event {
 	@ManyToOne
 	private Location location;
 	
+	public Date getDate() {
+		return this.date;
+	}
+	
+	public Location getLocation() {
+		return this.location;
+	}
+	
 	Event(){
 		//This constructor is used only because Hibernate need an empty constructor to build the objects
 	}

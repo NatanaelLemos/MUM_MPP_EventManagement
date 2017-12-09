@@ -1,4 +1,5 @@
 package edu.mum.eventmanagement.models;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -20,6 +21,22 @@ public class Location {
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public void addEvent(Event event) {
+		if(events == null) {
+			events = new ArrayList<Event>();
+		}
+		
+		events.add(event);
+	}
+	
+	public List<Event> getEvents(){
+		if(this.events == null) { //Avoid null check in controllers
+			return new ArrayList<Event>();
+		}
+		
+		return this.events;
 	}
 	
 	Location(){

@@ -3,6 +3,7 @@ package edu.mum.eventmanagement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import edu.mum.eventmanagement.controllers.EventController;
 import edu.mum.eventmanagement.models.Location;
@@ -24,24 +25,24 @@ public class CreateEvent {
 	@FXML private ComboBox<Location> cbxLocation;
 	@FXML private Pane eventPane;
 
-	@FXML
-	protected void onDateKeyReleased(KeyEvent event) {
+    @FXML public void initialize() {
+		loadCbxLocation();
+	}
+	
+	@FXML protected void onDateKeyReleased(KeyEvent event) {
 		WindowUtils.validateDate(txtDate);
 		WindowUtils.validateDate(txtDueDate);
 	}
-
-	@FXML
-	protected void handleCmbLocationShowing(javafx.event.Event event) {
+	
+	private void loadCbxLocation() {
 		cbxLocation.getItems().clear();
 		cbxLocation.setConverter(new StringConverter<Location>() {
 
-			@Override
-			public String toString(Location object) {
+			@Override public String toString(Location object) {
 				return object.getName();
 			}
 
-			@Override
-			public Location fromString(String string) {
+			@Override public Location fromString(String string) {
 				return cbxLocation.getItems().stream().filter(i -> i.getName().equals(string)).findFirst().orElse(null);
 			}
 		});
@@ -50,20 +51,19 @@ public class CreateEvent {
 			cbxLocation.getItems().add(l);
 		}
 	}
-
-	@FXML
-	protected void handleNewLocation(javafx.event.Event event) {
+	
+	@FXML protected void handleNewLocation(javafx.event.Event event) {
 		Window createLocation = new Window("createLocation", "New Location", 710, 380);
+		createLocation.setOnHiding(e -> loadCbxLocation());
 		createLocation.show();
 	}
 
-	@FXML
-	protected void handleSaveAction(javafx.event.Event event) {
-		if(!isValid()) {
-			return;
-		}
-		
+	@FXML protected void handleSaveAction(javafx.event.Event event) {
 		try {
+			if(!isValid()) {
+				return;
+			}
+		
 			Location location = cbxLocation.getValue();
 			ctrl.create(
 				new edu.mum.eventmanagement.models.Event(
@@ -73,15 +73,15 @@ public class CreateEvent {
 					location
 				)
 			);
+
+			Window.Alert("Event created", "Event created");
+			Window.close(eventPane);
 		} catch (ParseException p) {
 			Window.Error("Date parsing", "Date parsing problem, try again");
 		}
-		
-		Window.Alert("Event created", "Event created");
-		Window.close(eventPane);
 	}
 	
-	private boolean isValid() {
+	private boolean isValid() throws ParseException {
 		StringBuilder msg = new StringBuilder();
 		
 		if(txtEventName.getText().equals("")) {
@@ -102,11 +102,22 @@ public class CreateEvent {
 			msg.append("Event due date is empty");
 		}
 
-		if(cbxLocation.getValue() == null) {
+		Location location = cbxLocation.getValue(); 		
+		if(location == null) {
 			if(msg.length() > 0) {
 				msg.append("\r\n");
 			}
 			msg.append("Location is empty");
+		}
+
+		if (location != null && (!txtDate.getText().equals(""))) {
+			Date date = dateFormat.parse(txtDate.getText());
+			if (ctrl.hasEventInSameDate(location, date)) {
+				if (msg.length() > 0) {
+					msg.append("\r\n");
+				}
+				msg.append(location.getName() + " already has an event in " + txtDate.getText());
+			}
 		}
 		
 		if(msg.length() > 0) {

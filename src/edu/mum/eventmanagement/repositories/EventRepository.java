@@ -5,20 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import edu.mum.eventmanagement.models.Event;
+import edu.mum.eventmanagement.models.Location;
 
-public class EventRepository implements IRepository<Event>{
+public class EventRepository extends RepositoryBase<Event> implements IRepository<Event> {
 
-	EntityManager entityManager = HibernateUtil.getEntityManager();
-	
-	@Override
-	public List<Event> getAll() {
-		return (List<Event>)entityManager.createQuery("SELECT e from Event e", Event.class).getResultList();
-	}
-
-	@Override
-	public void add(Event entity) {
-		// TODO Auto-generated method stub
-		
-	}
-	
+	public EventRepository() {
+		super(Event.class);
+	}	
 }
