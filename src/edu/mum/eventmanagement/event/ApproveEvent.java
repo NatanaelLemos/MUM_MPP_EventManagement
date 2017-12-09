@@ -14,8 +14,6 @@ import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.Schedule;
 import edu.mum.eventmanagement.repositories.ActivityRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
-import edu.mum.eventmanagement.repositories.LocationRepository;
-import edu.mum.eventmanagement.repositories.ScheduleRepository;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -46,14 +44,13 @@ public class ApproveEvent implements Initializable {
 			data.add(new Event(e.getName(), e.getDate(), e.getDueDate(), e.getLocation()));	
 		}
 		
-		ScheduleRepository sr = new ScheduleRepository();
-		//List<Schedule> Schedules = sr.getAll();
+
 //		for(Schedule s : Schedules) {
 //			tableViewScheduler.getItems().add(new Schedule(s.getTimeStart(), s.getTimeEnd()));
 //		}
 		
-		ActivityRepository ar = new ActivityRepository();
-		ar.getAll();
+		//ActivityRepository ar = new ActivityRepository();
+		//ar.getAll();
 		
 		
 		

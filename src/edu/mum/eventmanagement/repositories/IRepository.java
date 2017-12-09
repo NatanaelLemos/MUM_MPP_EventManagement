@@ -10,5 +10,7 @@ public interface IRepository<TEntity> {
 	public void delete(TEntity entity);
 	
 	public TEntity get(int id);
+	
+	public TEntity update(TEntity entity);
 
 }
