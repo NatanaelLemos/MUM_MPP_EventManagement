@@ -37,16 +37,4 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 	    entityManager.close();
 	}
 
-	@Override
-	public TEntity FindById(int id) {
-		EntityManager entityManager = HibernateUtil.getEntityManager();
-		
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<TEntity> cq = cb.createQuery(type);
-        Root<TEntity> rootEntry = cq.from(type);
-
-        //TEntity all = cq.select(rootEntry).where(cb.equal(rootEntry.get("Id"), id));
-        //TypedQuery<TEntity> allQuery = entityManager.createQuery(all);
-		return null;
-	}
 }

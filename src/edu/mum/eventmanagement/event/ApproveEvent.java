@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
+import edu.mum.eventmanagement.models.Activity;
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.Schedule;
+import edu.mum.eventmanagement.repositories.ActivityRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
 import edu.mum.eventmanagement.repositories.LocationRepository;
 import edu.mum.eventmanagement.repositories.ScheduleRepository;
@@ -26,6 +27,7 @@ import javafx.scene.control.TableView;
 public class ApproveEvent implements Initializable {
 	@FXML private TableView<Event> tableView;
 	@FXML private TableView<Schedule> tableViewScheduler;
+	@FXML private TableView<Activity> tableViewActivity;
 	@FXML private TableColumn<Event, String> name;
 	ObservableList<Event> data;
     //@FXML private TableColumn<Event, EventState> State;
@@ -50,8 +52,11 @@ public class ApproveEvent implements Initializable {
 //			tableViewScheduler.getItems().add(new Schedule(s.getTimeStart(), s.getTimeEnd()));
 //		}
 		
-		LocationRepository lr = new LocationRepository();
-		lr.getAll();
+		ActivityRepository ar = new ActivityRepository();
+		ar.getAll();
+		
+		
+		
 		
 		tableView.getSelectionModel().selectedIndexProperty().addListener(
 				new RowSelectChangeListener());
