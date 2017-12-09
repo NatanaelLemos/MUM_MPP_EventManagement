@@ -17,6 +17,12 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 	}
 	
 	@Override
+	public TEntity get(int id) {
+		EntityManager entityManager = HibernateUtil.getEntityManager();
+		return entityManager.find(type, id);	
+	}
+	
+	@Override
 	public List<TEntity> getAll() {
 		EntityManager entityManager = HibernateUtil.getEntityManager();
 		
@@ -33,6 +39,21 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 		EntityManager entityManager = HibernateUtil.getEntityManager();
 	    entityManager.getTransaction().begin();
 	    entityManager.persist(entity);
+	    entityManager.getTransaction().commit();
+	    entityManager.close();
+	}
+
+
+	
+	@Override
+	public void delete(TEntity entity) {
+		EntityManager entityManager = HibernateUtil.getEntityManager();
+		
+		if(!entityManager.getTransaction().isActive()) {
+			entityManager.getTransaction().begin();
+		}
+		
+	    entityManager.remove(entity);
 	    entityManager.getTransaction().commit();
 	    entityManager.close();
 	}

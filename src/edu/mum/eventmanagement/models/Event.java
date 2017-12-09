@@ -1,5 +1,6 @@
 package edu.mum.eventmanagement.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +30,58 @@ public class Event {
 	@ManyToOne
 	private Location location;
 	
+	@OneToMany
+	private List<Advertisement> advertisements;
+	
+	@OneToMany
+	private List<Schedule> schedules;
+
+	
 	public Date getDate() {
 		return this.date;
 	}
 	
+
+	
 	public Location getLocation() {
 		return this.location;
+	}
+	
+	public String getLocationName() {
+		Location location = getLocation();
+		if(location == null) return "";
+		return location.getName();
+	}
+	
+	public List<Advertisement> getAdvertisements(){
+		if(advertisements == null) {
+			return new ArrayList<Advertisement>();
+		}
+		
+		return this.advertisements;
+	}
+	
+	public void addAdvertisement(Advertisement advertisement) {
+		if(advertisements == null) {
+			advertisements = new ArrayList<Advertisement>();
+		}
+		
+		advertisements.add(advertisement);
+	}
+	
+	public List<Schedule> getSchedules(){
+		if(schedules == null) {
+			return new ArrayList<Schedule>();
+		}
+		return this.schedules;
+	}
+	
+	public void addSchedule(Schedule schedule) {
+		if(schedules == null) {
+			schedules = new ArrayList<Schedule>();
+		}
+		
+		schedules.add(schedule);
 	}
 	
 	Event(){

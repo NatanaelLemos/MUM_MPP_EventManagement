@@ -38,10 +38,17 @@ public class Menu extends Application {
     	createEvent.show();
     }
     
+
     @FXML protected void handleApproveEventAction(ActionEvent eveent) {
     	
     	Window createEvent = new Window("event/approveEvent", "Approve Event", 840, 500);
     	
     	createEvent.show();
+    }
+
+    @FXML protected void handleAdvertisementAction(ActionEvent event) {
+    	Window advertisement = new Window("advertisement", "Advertisement", 960, 600);
+    	advertisement.show();
+
     }
 }

@@ -45,7 +45,7 @@ public class CreateLocation {
 		}
 		
 		if(msg.length() > 0) {
-			Window.Error("Validation", msg.toString());
+			Window.error("Validation", msg.toString());
 			return false;
 		}else {
 			return true;
