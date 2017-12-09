@@ -4,6 +4,6 @@ import javax.persistence.*;
 @Entity
 public abstract class UserRole {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 }

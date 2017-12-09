@@ -5,9 +5,9 @@ import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 
 public class About {
-    @FXML private Pane aboutGrid;
+    @FXML private Pane aboutPane;
 	
     @FXML protected void handleCloseAction(ActionEvent event) {
-    	aboutGrid.getScene().getWindow().hide();
+    	Window.close(aboutPane);
     }
 }

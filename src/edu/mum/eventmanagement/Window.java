@@ -1,11 +1,15 @@
 package edu.mum.eventmanagement;
 
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Pane;
 
 public class Window extends Stage {
 
@@ -18,7 +22,10 @@ public class Window extends Stage {
 			Parent root = FXMLLoader.load(getClass().getResource(fXmlFile + ".fxml"));
 			this.setTitle(title);
 
+			customizeRoot(root);
+
 			Scene currentScene = new Scene(root, width, height);
+			currentScene.getStylesheets().add(getClass().getResource("Bootstrap.css").toExternalForm());
 			currentScene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 
 			this.setScene(currentScene);
@@ -26,5 +33,36 @@ public class Window extends Stage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void customizeRoot(Parent parent) {
+		for (Node node : parent.getChildrenUnmodifiable()) {
+			if (node instanceof Button) {
+				((Button) node).setPrefHeight(30);
+			}
+			if (node instanceof Parent) {
+				customizeRoot((Parent) node);
+			}
+		}
+	}
+	
+	static void close(Pane windowToClose) {
+		windowToClose.getScene().getWindow().hide();
+	}
+	
+	static void Alert(String title, String message) {
+		showAlert(AlertType.INFORMATION, title, message);
+	}
+	
+	static void Error(String title, String message) {
+		showAlert(AlertType.ERROR, title, message);
+	}
+	
+	private static void showAlert(AlertType type, String title, String message) {
+		javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
+		alert.setTitle(title);
+		alert.setHeaderText(title);
+		alert.setContentText(message);
+		alert.showAndWait();
 	}
 }

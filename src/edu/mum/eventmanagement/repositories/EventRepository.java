@@ -14,5 +14,11 @@ public class EventRepository implements IRepository<Event>{
 	public List<Event> getAll() {
 		return (List<Event>)entityManager.createQuery("SELECT e from Event e", Event.class).getResultList();
 	}
+
+	@Override
+	public void add(Event entity) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

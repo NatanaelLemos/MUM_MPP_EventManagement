@@ -7,8 +7,9 @@ import javax.persistence.*;
 @Entity
 public class Schedule {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private Period timeStart;
 	private Period timeEnd;
 	
