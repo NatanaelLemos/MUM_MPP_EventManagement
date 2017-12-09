@@ -37,4 +37,9 @@ public class Menu extends Application {
     	Window createEvent = new Window("createEvent", "New Event", 740, 410);
     	createEvent.show();
     }
+    
+    @FXML protected void handleAdvertisementAction(ActionEvent event) {
+    	Window advertisement = new Window("advertisement", "Advertisement", 960, 600);
+    	advertisement.show();
+    }
 }

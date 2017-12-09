@@ -1,6 +1,17 @@
 package edu.mum.eventmanagement;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+import edu.mum.eventmanagement.models.Location;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 public final class WindowUtils {
 	public static void validateDate(TextField textField) {
@@ -67,5 +78,43 @@ public final class WindowUtils {
 
 		textField.setText(text);
 		textField.positionCaret(text.length());
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void setDateColumn(TableColumn column) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		
+		column.setCellFactory(c -> {
+		    TableCell<Object, Date>  cell = new TableCell<Object, Date>() {
+		        @Override
+		        protected void updateItem(Date item, boolean empty) {
+		            super.updateItem(item, empty);
+		            if(empty) {
+		                setText(null);
+		            }
+		            else {
+		                setText(dateFormat.format(item));
+		            }
+		        }
+		    };
+
+		    return cell;
+		});
+	}
+
+	
+	public static <TEntity> void loadCombobox(ComboBox<TEntity> comboBox, List<TEntity> dataSource, Function<TEntity, ?> keyExtractor) {
+		comboBox.getItems().clear();
+		comboBox.setConverter(new StringConverter<TEntity>() {
+			@Override public String toString(TEntity object) {
+				return keyExtractor.apply(object).toString();
+			}
+
+			@Override public TEntity fromString(String string) {
+				return comboBox.getItems().stream().filter(i -> keyExtractor.apply(i).equals(string)).findFirst().orElse(null);
+			}
+		});
+		
+		comboBox.getItems().setAll(dataSource);
 	}
 }

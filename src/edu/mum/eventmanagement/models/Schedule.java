@@ -1,6 +1,5 @@
 package edu.mum.eventmanagement.models;
 
-import java.time.Period;
 import java.util.*;
 import javax.persistence.*;
 
@@ -10,16 +9,21 @@ public class Schedule {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private Period timeStart;
-	private Period timeEnd;
+	private String timeStart;
+	private String timeEnd;
 	
-	@OneToMany
-	private List<Activity> activities;
+	@ManyToOne
+	private Activity activity;
 	
 	@ManyToOne
 	private Event event;
 	
-	public Schedule() {
-		activities = new ArrayList<Activity>();
+	Schedule() {
+	}
+	
+	public Schedule(String timeStart, String timeEnd, Event event) {
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.event = event;
 	}
 }

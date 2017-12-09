@@ -35,4 +35,17 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 	    entityManager.getTransaction().commit();
 	    entityManager.close();
 	}
+	
+	@Override
+	public void delete(TEntity entity) {
+		EntityManager entityManager = HibernateUtil.getEntityManager();
+		
+		if(!entityManager.getTransaction().isActive()) {
+			entityManager.getTransaction().begin();
+		}
+		
+	    entityManager.remove(entity);
+	    entityManager.getTransaction().commit();
+	    entityManager.close();
+	}
 }

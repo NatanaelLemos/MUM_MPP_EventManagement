@@ -35,21 +35,7 @@ public class CreateEvent {
 	}
 	
 	private void loadCbxLocation() {
-		cbxLocation.getItems().clear();
-		cbxLocation.setConverter(new StringConverter<Location>() {
-
-			@Override public String toString(Location object) {
-				return object.getName();
-			}
-
-			@Override public Location fromString(String string) {
-				return cbxLocation.getItems().stream().filter(i -> i.getName().equals(string)).findFirst().orElse(null);
-			}
-		});
-
-		for (Location l : ctrl.getLocations()) {
-			cbxLocation.getItems().add(l);
-		}
+		WindowUtils.loadCombobox(cbxLocation, ctrl.getLocations(), i -> i.getName());
 	}
 	
 	@FXML protected void handleNewLocation(javafx.event.Event event) {
@@ -74,10 +60,10 @@ public class CreateEvent {
 				)
 			);
 
-			Window.Alert("Event created", "Event created");
+			Window.alert("Event created", "Event created");
 			Window.close(eventPane);
 		} catch (ParseException p) {
-			Window.Error("Date parsing", "Date parsing problem, try again");
+			Window.error("Date parsing", "Date parsing problem, try again");
 		}
 	}
 	
@@ -121,7 +107,7 @@ public class CreateEvent {
 		}
 		
 		if(msg.length() > 0) {
-			Window.Error("Validation", msg.toString());
+			Window.error("Validation", msg.toString());
 			return false;
 		}else {
 			return true;

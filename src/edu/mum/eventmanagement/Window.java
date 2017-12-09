@@ -1,9 +1,14 @@
 package edu.mum.eventmanagement;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
+import java.util.function.Function;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.control.Alert.AlertType;
@@ -50,19 +55,39 @@ public class Window extends Stage {
 		windowToClose.getScene().getWindow().hide();
 	}
 	
-	static void Alert(String title, String message) {
+	static void alert(String title, String message) {
 		showAlert(AlertType.INFORMATION, title, message);
 	}
 	
-	static void Error(String title, String message) {
+	static void error(String title, String message) {
 		showAlert(AlertType.ERROR, title, message);
 	}
 	
-	private static void showAlert(AlertType type, String title, String message) {
+	static void confirm(String title, String message, Runnable okCallback, Runnable cancelCallback) {
+		Optional<ButtonType> result = showAlert(AlertType.CONFIRMATION, title, message);
+
+		if (result.get() == ButtonType.OK){
+			if(okCallback != null) {
+				okCallback.run();
+			}
+		} else {
+			if(cancelCallback != null) {
+				cancelCallback.run();
+			}
+		}
+	}
+	
+	private static Optional<ButtonType> showAlert(AlertType type, String title, String message) {
 		javafx.scene.control.Alert alert = new javafx.scene.control.Alert(type);
 		alert.setTitle(title);
-		alert.setHeaderText(title);
+		alert.setHeaderText(null);
 		alert.setContentText(message);
-		alert.showAndWait();
+		return alert.showAndWait();
+	}
+	
+	static File chooseFile(String title) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle(title);
+		return fileChooser.showOpenDialog(new Stage());	
 	}
 }
