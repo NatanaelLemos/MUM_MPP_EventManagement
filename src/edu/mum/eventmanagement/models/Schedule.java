@@ -12,6 +12,8 @@ public class Schedule {
 	private String timeStart;
 	private String timeEnd;
 	
+	private ScheduleState state;
+	
 	@ManyToOne
 	private Activity activity;
 	
