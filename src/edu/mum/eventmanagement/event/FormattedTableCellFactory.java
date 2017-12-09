@@ -32,7 +32,10 @@
 
 package edu.mum.eventmanagement.event;
 
+import java.awt.event.MouseEvent;
 import java.text.Format;
+
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TableCell;
@@ -98,6 +101,17 @@ public class FormattedTableCellFactory<S, T> implements Callback<TableColumn<S, 
                 cell.setAlignment(Pos.CENTER_LEFT);
                 break;
         }
+        
+//        cell.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                if (event.getClickCount() > 1) {
+//                    
+//                	System.out.println("asdfasdf");
+//                }
+//            }
+//        });
+        
         return cell;
     }
 }
