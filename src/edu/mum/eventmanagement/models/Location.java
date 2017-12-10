@@ -27,6 +27,10 @@ public class Location {
 		return this.name;
 	}
 	
+	public String getAddress() {
+		return this.address;
+	}
+	
 	public void addEvent(Event event) {
 		if(events == null) {
 			events = new ArrayList<Event>();

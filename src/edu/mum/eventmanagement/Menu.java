@@ -52,6 +52,11 @@ public class Menu extends Application {
 
     }
     
+    @FXML protected void handleRegisterHostAction(ActionEvent event) {
+    	Window createHost = new Window("createHost", "New Host", 740, 410);
+    	createHost.show();
+    }
+    
     @FXML protected void handleLoginAction(ActionEvent event) {
     	Window advertisement = new Window("login", "Login", 500, 300);
     	advertisement.show();

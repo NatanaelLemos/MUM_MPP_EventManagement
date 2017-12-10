@@ -10,4 +10,8 @@ public abstract class UserRole {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
 	private User user;
+    
+    public void setUser(User user) {
+    	this.user = user;
+    }
 }

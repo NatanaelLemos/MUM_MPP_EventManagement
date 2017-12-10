@@ -28,6 +28,11 @@
                 <MenuItem mnemonicParsing="false" text="Advertisement" onAction="#handleAdvertisementAction"/>
               </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="User">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Register host" onAction="#handleRegisterHostAction"/>
+              </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Help">
               <items>
                 <MenuItem mnemonicParsing="false" text="About" onAction="#handleAboutAction"/>

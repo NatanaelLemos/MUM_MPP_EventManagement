@@ -19,4 +19,8 @@ public class Country {
         orphanRemoval = true
     )
 	private List<User> users;
+    
+    public String getName() {
+    	return name;
+    }
 }

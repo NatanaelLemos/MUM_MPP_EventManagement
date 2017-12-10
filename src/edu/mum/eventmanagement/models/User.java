@@ -3,6 +3,8 @@ package edu.mum.eventmanagement.models;
 import java.util.*;
 import javax.persistence.*;
 
+import edu.mum.eventmanagement.services.CryptographyService;
+
 @Entity
 @Table(name = "User")
 public class User {
@@ -20,6 +22,10 @@ public class User {
 	@Column(length = 255)
 	private String password;
 	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+	private Country country;
+	
 	@OneToMany(
         mappedBy = "user", 
 	    cascade = CascadeType.ALL, 
@@ -27,15 +33,54 @@ public class User {
 	)
 	private List<UserRole> roles;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id")
-	private Country country;
-	
-	public User() {
+	User() {
 		roles = new ArrayList<UserRole>();
+	}
+	
+	public User(String username, String email, String password, Country country) {
+		this();
+		this.username = username;
+		this.email = email;
+		this.password = CryptographyService.encrypt(password);
+		this.country = country;
+	}
+	
+	public String getUsername() {
+		return this.username;
 	}
 	
 	public String getEmail() {
 		return this.email;
+	}
+	
+	public void addRole(UserRole role) {
+		if(roles == null) {
+			roles = new ArrayList<UserRole>();
+		}
+		
+		role.setUser(this);
+		roles.add(role);
+	}
+	
+	public List<UserRole> getRoles(){
+		if(this.roles == null) {
+			return new ArrayList<UserRole>();
+		}
+		
+		return this.roles;
+	}
+	
+	public Country getCountry() {
+		return this.country;
+	}
+
+	public <TType> boolean hasRole(Class<TType> classType) {
+		for(UserRole role : getRoles()) {
+			if(role.getClass().equals(classType)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }
