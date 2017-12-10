@@ -77,9 +77,12 @@ public class ApproveEvent {
 
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
+		if(ss.size() > 0) {
 		tblScheduler.getItems().setAll(ss);
-		
 		displayTblAdvertisements(true);
+		} else {
+			displayTblAdvertisements(false);
+		}
 	}
 	
 
