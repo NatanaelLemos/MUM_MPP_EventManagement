@@ -41,7 +41,7 @@
         <TableColumn maxWidth="2000" minWidth="10.0" prefWidth="210.0" text="State" fx:id="colScheduleState" />
       </columns>
     </TableView>
-    <Button layoutX="21.0" layoutY="463.0" mnemonicParsing="false" onAction="#ApproveSchedule" text="Approve" />
-    <Button layoutX="118.0" layoutY="463.0" mnemonicParsing="false" onAction="#DeclineSchedule" text="Decline" />
+    <Button layoutX="21.0" layoutY="463.0" mnemonicParsing="false" fx:id="btnApprove" onAction="#ApproveSchedule" text="Approve" />
+    <Button layoutX="118.0" layoutY="463.0" mnemonicParsing="false" fx:id="btnDecline" onAction="#DeclineSchedule" text="Decline" />
   </children>
 </AnchorPane>

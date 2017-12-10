@@ -30,4 +30,14 @@ public class UserController {
 		User user = userRepository.getByEmail(email);
 		return user;
 	}
+	
+	public void InviteGuest(User newUser) {
+		User oldUser = getUserByEmail(newUser.getEmail());
+		if(oldUser == null) {
+			newUser.addRole(new edu.mum.eventmanagement.models.Guest());
+			userRepository.add(newUser);
+		}else {
+			System.out.println("Existed Email");
+		}
+	}
 }

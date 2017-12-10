@@ -25,6 +25,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,11 +48,16 @@ public class ApproveEvent {
 	@FXML protected TableColumn<Schedule, String> colActivity;
 	@FXML protected TableColumn<Schedule, String> colScheduleState;
 	
+	@FXML protected Button btnApprove;
+	@FXML protected Button btnDecline;
+	
 	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 	    
 	public void initialize() {
 		// TODO Auto-generated method stub		
 		displayTblSchedule(false);
+		btnApprove.setVisible(false);
+		btnDecline.setVisible(false);
 			
 		WindowUtils.setDateColumn(colEventDate);
 		WindowUtils.setDateColumn(colEventDueDate);
@@ -73,6 +79,7 @@ public class ApproveEvent {
 	
 	private void displayTblSchedule(boolean isVisible) {
 		tblScheduler.setVisible(isVisible);
+		
 	}
 	
 	private void loadSchedule(Event ev) {
@@ -83,13 +90,22 @@ public class ApproveEvent {
 		colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
 
 
+
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
 		if(ss.size() > 0) {
 		tblScheduler.getItems().setAll(ss);
 		displayTblSchedule(true);
+		
+		btnApprove.setVisible(true);
+		btnDecline.setVisible(true);
+		
 		} else {
 			displayTblSchedule(false);
+			
+			btnApprove.setVisible(false);
+			btnDecline.setVisible(false);
+			
 		}
 	}
 	
@@ -108,5 +124,7 @@ public class ApproveEvent {
 		ScheduleRepository er = new ScheduleRepository();
         er.update(sc);
 	}
+	
+	
 		
 }

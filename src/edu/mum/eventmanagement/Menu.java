@@ -65,4 +65,9 @@ public class Menu extends Application {
     @FXML protected void handleLogoutAction(ActionEvent event) {
     	
     }
+    
+    @FXML protected void handleInviteGuestction(ActionEvent event) {
+    	Window advertisement = new Window("InviteGuest", "Invite Guest", 300, 400);
+    	advertisement.show();
+    }
 }
