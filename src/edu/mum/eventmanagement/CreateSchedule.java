@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -171,5 +172,10 @@ public class CreateSchedule {
 	
 	@FXML protected void handleCancelAction(ActionEvent event) {
 		displayPnlSchedule(false);
+	}
+
+	@FXML protected void onTimeKeyReleased(KeyEvent event) {
+		WindowUtils.validateTime(txtTimeStart);
+		WindowUtils.validateTime(txtTimeEnd);
 	}
 }

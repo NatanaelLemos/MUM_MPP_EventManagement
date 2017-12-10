@@ -48,8 +48,8 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#handleCancelAction" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#handleNewActivityAction" text="+" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="txtTimeStart" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <TextField fx:id="txtTimeEnd" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtTimeStart" onKeyReleased="#onTimeKeyReleased" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="txtTimeEnd" onKeyReleased="#onTimeKeyReleased" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="cbxActivities" prefWidth="644.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
               <items>
                 <FXCollections fx:factory="observableArrayList">

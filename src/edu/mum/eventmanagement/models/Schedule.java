@@ -34,7 +34,7 @@ public class Schedule {
 //	        cascade = CascadeType.ALL, 
 //	        orphanRemoval = true
 //	    )
-	private List<Vote> votes;
+	//private List<Vote> votes;
 	
     /**
 	 * @return the state

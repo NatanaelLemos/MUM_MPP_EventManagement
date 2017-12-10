@@ -4,19 +4,28 @@ import edu.mum.eventmanagement.controllers.ActivityController;
 import edu.mum.eventmanagement.models.Food;
 import edu.mum.eventmanagement.models.Performance;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 public class CreateActivity {
 	private ActivityController ctrl = new ActivityController();
+	final ToggleGroup activityTypeGroup = new ToggleGroup();
 	
 	@FXML protected Pane activityPane;
 	@FXML protected TextField txtActivityName;
 	@FXML protected RadioButton rbtFood;
 	@FXML protected RadioButton rbtPerformance; 
 	
+	@FXML public void initialize() {
+		rbtFood.setToggleGroup(activityTypeGroup);
+		rbtPerformance.setToggleGroup(activityTypeGroup);
+	}
+		
 	@FXML protected void handleSaveAction(ActionEvent event) {
 		
 		if(!isValid()) {
