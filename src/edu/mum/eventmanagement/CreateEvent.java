@@ -43,7 +43,7 @@ public class CreateEvent {
 	@FXML protected void handleNewLocation(javafx.event.Event event) {
 		Window createLocation = new Window("createLocation", "New Location", 710, 380);
 		createLocation.setOnHiding(e -> loadCbxLocation());
-		createLocation.show();
+		createLocation.showAndWait();
 	}
 
 	@FXML protected void handleSaveAction(javafx.event.Event event) {

@@ -14,6 +14,54 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 public final class WindowUtils {
+	public static void validateTime(TextField textField) {
+		String text = textField.getText();
+		if(text == null) {
+			return;
+		}
+		
+		if(text.length() > 2 && text.charAt(2) != ':') {
+			text = text.substring(0,  2) + ":" + text.substring(2);
+		}
+		
+		if(text.length() > 6) {
+			text = text.substring(0, 7);
+			
+			String hour = text.substring(0, 2);
+			String minute = text.substring(3, 5);
+			String dayTime = text.substring(5, 7);
+			
+			for(char c : hour.toCharArray()) {
+				if(!Character.isDigit(c)) {
+					textField.setText("");
+					return;
+				}
+			}
+			
+			for(char c : minute.toCharArray()) {
+				if(!Character.isDigit(c)) {
+					textField.setText("");
+					return;
+				}
+			}
+			
+			dayTime = dayTime.toUpperCase();
+			
+			if(
+				(!dayTime.equals("AM")) && 
+				(!dayTime.equals("PM"))
+			) {
+				textField.setText("");
+				return;
+			}
+			
+			text = hour + ":" + minute + dayTime;
+		}
+
+		textField.setText(text);
+		textField.positionCaret(text.length());	
+	}
+	
 	public static void validateDate(TextField textField) {
 
 		String text = textField.getText();
