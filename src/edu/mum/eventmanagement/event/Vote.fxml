@@ -13,33 +13,23 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="approveEventFormId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="690.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.event.Vote">
+<AnchorPane id="AnchorPane" fx:id="voteFormId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="761.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.event.Vote">
   <children>
-    <Pane layoutX="22.0" layoutY="24.0" prefHeight="269.0" prefWidth="647.0">
+    <Pane layoutX="22.0" layoutY="24.0" prefHeight="269.0" prefWidth="695.0">
       <children>
         <Label layoutX="14.0" layoutY="14.0" text="Vote for the Best Activity">
           <font>
             <Font name="System Bold" size="15.0" fx:id="x1" />
           </font>
         </Label>
-        <TableView fx:id="tblScheduler" layoutX="37.0" layoutY="61.0" prefHeight="152.0" prefWidth="569.0">
+        <TableView fx:id="tblScheduler" layoutX="231.0" layoutY="61.0" prefHeight="152.0" prefWidth="464.0">
           <columns>
             <TableColumn maxWidth="2000.0" minWidth="10.0" prefWidth="155.0" text="Time Start" fx:id="colTimeStart" />
-            <TableColumn maxWidth="2000.0" minWidth="10.0" prefWidth="210.0" text="Time End" fx:id="colTimeEnd" />
+            <TableColumn maxWidth="2000.0" minWidth="10.0" prefWidth="124.0" text="Time End" fx:id="colTimeEnd" />
             <TableColumn maxWidth="2000.0" minWidth="10.0" prefWidth="210.0" text="Activity" fx:id="colActivity" />
- 
           </columns>
         </TableView>
-        <Button fx:id="btnVote" layoutX="415.0" layoutY="239.0" mnemonicParsing="false" onAction="#voteAction" text="Vote" />
-        <RadioButton id="chVote" layoutX="142.0" layoutY="247.0" mnemonicParsing="false" text="1">
-          <toggleGroup>
-            <ToggleGroup fx:id="toggleGr1" />
-          </toggleGroup>
-        </RadioButton>
-        <RadioButton layoutX="194.0" layoutY="247.0" mnemonicParsing="false" text="2" toggleGroup="$toggleGr1" />
-        <RadioButton layoutX="242.0" layoutY="247.0" mnemonicParsing="false" selected="true" text="3" toggleGroup="$toggleGr1" />
-        <RadioButton layoutX="298.0" layoutY="247.0" mnemonicParsing="false" text="4" toggleGroup="$toggleGr1" />
-        <RadioButton layoutX="356.0" layoutY="247.0" mnemonicParsing="false" text="5" toggleGroup="$toggleGr1" />
+        <Button fx:id="btnVote" layoutX="409.0" layoutY="233.0" mnemonicParsing="false" onAction="#voteAction" prefWidth="109.0" styleClass="primary" text="Vote" />
       </children>
     </Pane>
   </children>
