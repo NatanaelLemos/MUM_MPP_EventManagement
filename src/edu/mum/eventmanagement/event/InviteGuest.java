@@ -11,6 +11,7 @@ import edu.mum.eventmanagement.models.Schedule;
 import edu.mum.eventmanagement.models.ScheduleState;
 import edu.mum.eventmanagement.models.User;
 import edu.mum.eventmanagement.repositories.ScheduleRepository;
+import edu.mum.eventmanagement.services.EmailService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,12 +31,15 @@ public class InviteGuest {
 	@FXML TextField txtEmail;
 	
 	@FXML protected void inviteGuestAction(ActionEvent event) {
-		ctrl.InviteGuest(new User(null, txtEmail.getText(), null, null));
-		ArrayList<String> data = new ArrayList<String>();
+		//ctrl.InviteGuest(new User(null, txtEmail.getText(), null, null));
+		//ArrayList<String> data = new ArrayList<String>();
 		
-		colEmail.setCellValueFactory(new PropertyValueFactory<String, String>("colEmail"));
+		//colEmail.setCellValueFactory(new PropertyValueFactory<String, String>("colEmail"));
 
-		data.add("asdf");
-		tblGuest.getItems().setAll(data);
+		//data.add("asdf");
+		//tblGuest.getItems().setAll(data);
+		
+		EmailService.inviteGuest(txtEmail.getText());
+		//System.out.println(txtEmail.getText());
 	}
 }

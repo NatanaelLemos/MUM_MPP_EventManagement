@@ -103,5 +103,9 @@ public class Schedule {
 	}
 	
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "host_id")
+	private Host host;
+	
 
 }
