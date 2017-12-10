@@ -73,14 +73,24 @@ public class User {
 	public Country getCountry() {
 		return this.country;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public <TRole> TRole getRole(Class<TRole> classType) {
+		try {
+			for(UserRole role : getRoles()) {
+				if(role.getClass().equals(classType)) {
+					return (TRole)role;
+				}
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+
+		return null;
+	}
 
 	public <TType> boolean hasRole(Class<TType> classType) {
-		for(UserRole role : getRoles()) {
-			if(role.getClass().equals(classType)) {
-				return true;
-			}
-		}
-		
-		return false;
+		TType role = getRole(classType);
+		return role != null;
 	}
 }

@@ -30,4 +30,19 @@ public abstract class Activity {
 	public String getDescription() {
 		return getName() + " (" + getClass().getSimpleName() + ")";
 	}
+	
+	public void addSchedule(Schedule schedule) {
+		if(schedules == null) {
+			schedules = new ArrayList<Schedule>();
+		}
+		
+		schedules.add(schedule);
+	}
+	
+	public List<Schedule> getSchedules(){
+		if(schedules == null) {
+			return new ArrayList<Schedule>();
+		}
+		return this.schedules;
+	}
 }

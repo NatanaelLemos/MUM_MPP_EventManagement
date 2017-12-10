@@ -65,13 +65,13 @@ public class Menu extends Application implements ISessionObserver {
     }
     
     @FXML protected void handleCreateScheduleAction(ActionEvent event) {
-//    	if(
-//			(Session.getInstance().getUser() == null) || 
-//			(!Session.getInstance().getUser().hasRole(Host.class))
-//		) {
-//    		Window.error("Denied", "You have no permission to access this function");
-//    		return;
-//    	}
+    	if(
+			(Session.getInstance().getUser() == null) || 
+			(!Session.getInstance().getUser().hasRole(Host.class))
+		) {
+    		Window.error("Denied", "You don't have permission to access this function");
+    		return;
+    	}
     	
     	Window schedule = new Window("createSchedule", "New Schedule", 960, 600);
     	schedule.show();
