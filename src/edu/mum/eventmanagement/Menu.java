@@ -97,7 +97,7 @@ public class Menu extends Application implements ISessionObserver {
     }
     
     @FXML protected void handleVoteAction(ActionEvent event) {
-    	Window advertisement = new Window("event/Vote", "Vote for the best", 800, 350);
+    	Window advertisement = new Window("event/Vote", "Vote for the best", 900, 500);
     	advertisement.show();
     }
 
