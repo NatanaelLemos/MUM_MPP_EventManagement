@@ -1,7 +1,9 @@
 package edu.mum.eventmanagement.event;
 
 import java.util.List;
+import edu.mum.eventmanagement.*;
 
+import edu.mum.eventmanagement.Window;
 import edu.mum.eventmanagement.models.Activity;
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.Schedule;
@@ -36,9 +38,11 @@ public class Vote {
 	@FXML protected ToggleGroup toggleGr1 = new ToggleGroup();
 	@FXML protected void voteAction(ActionEvent event) {
 		//System.out.println( toggleGr1.getSelectedToggle().getUserData().toString());
-		RadioButton selectedRadioButton = (RadioButton) toggleGr1.getSelectedToggle();
-		String toogleGroupValue = selectedRadioButton.getText();
-		System.out.println(toogleGroupValue);
+		//RadioButton selectedRadioButton = (RadioButton) toggleGr1.getSelectedToggle();
+		//String toogleGroupValue = selectedRadioButton.getText();
+		//System.out.println(toogleGroupValue);
+		
+		Window.alert("Event created", "Thanks for your Voted");
 	}
 	
 	

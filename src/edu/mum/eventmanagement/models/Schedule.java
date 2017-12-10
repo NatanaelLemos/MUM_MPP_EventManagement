@@ -29,14 +29,24 @@ public class Schedule {
 	
 	private ScheduleState state;
 	
-//	@OneToMany(
-//	        mappedBy = "schedule", 
-//	        cascade = CascadeType.ALL, 
-//	        orphanRemoval = true
-//	    )
-	private List<Vote> votes;
+	@OneToMany(
+	        orphanRemoval = true
+	    )
+	private List<Guest> votes;
 	
     /**
+	 * @return the votes
+	 */
+	public List<Guest> getVotes() {
+		return votes;
+	}
+	/**
+	 * @param votes the votes to set
+	 */
+	public void setVotes(List<Guest> votes) {
+		this.votes = votes;
+	}
+	/**
 	 * @return the state
 	 */
 	public ScheduleState getState() {
