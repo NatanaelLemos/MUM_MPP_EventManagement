@@ -18,37 +18,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class InviteGuest {
 	
 	private UserController ctrl = new UserController();
-//	@FXML private TableView<Event> tblEvents;
-//	@FXML protected TableColumn<Event, String> colEventName;
-//	@FXML protected TableColumn<Event, String> colEventDate;
-//	@FXML protected TableColumn<Event, String> colEventDueDate;
-//	@FXML protected TableColumn<Event, String> colEventLocation;
-//	
-//	@FXML private TableView<Schedule> tblScheduler;
-//	@FXML private TableView<Activity> tableViewActivity;
-//	@FXML private TableColumn<Event, String> name;
-//	private Event selectedEvent;
-//	ObservableList<Event> data;
-//	
-//	@FXML protected TableColumn<Schedule, String> colTimeStart;
-//	@FXML protected TableColumn<Schedule, String> colTimeEnd;
-//	@FXML protected TableColumn<Schedule, String> colActivity;
-//	@FXML protected TableColumn<Schedule, String> colScheduleState;
-	
+
 	@FXML private TableView<String> tblGuest;
-	@FXML protected TableColumn<Event, String> colEmail;
+	@FXML protected TableColumn<String, String> colEmail;
 	@FXML Button btnInvite;
 	@FXML TextField txtEmail;
 	
 	@FXML protected void inviteGuestAction(ActionEvent event) {
 		ctrl.InviteGuest(new User(null, txtEmail.getText(), null, null));
-		//Window.alert("Success", "Host created");
-		//System.out.println(txtEmail.getText());
 		ArrayList<String> data = new ArrayList<String>();
+		
+		colEmail.setCellValueFactory(new PropertyValueFactory<String, String>("colEmail"));
+
 		data.add("asdf");
 		tblGuest.getItems().setAll(data);
 	}
