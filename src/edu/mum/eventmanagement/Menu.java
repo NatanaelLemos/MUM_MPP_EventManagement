@@ -49,7 +49,6 @@ public class Menu extends Application {
     @FXML protected void handleAdvertisementAction(ActionEvent event) {
     	Window advertisement = new Window("advertisement", "Advertisement", 960, 600);
     	advertisement.show();
-
     }
     
     @FXML protected void handleRegisterHostAction(ActionEvent event) {
@@ -66,8 +65,14 @@ public class Menu extends Application {
     	
     }
     
-    @FXML protected void handleInviteGuestction(ActionEvent event) {
-    	Window advertisement = new Window("InviteGuest", "Invite Guest", 300, 400);
+    @FXML protected void handleInviteGuestAction(ActionEvent event) {
+    	Window advertisement = new Window("event/InviteGuest", "Invite Guest", 300, 400);
     	advertisement.show();
     }
+    
+    @FXML protected void handleVoteAction(ActionEvent event) {
+    	Window advertisement = new Window("event/Vote", "Vote for the best", 700, 350);
+    	advertisement.show();
+    }
+    
 }
