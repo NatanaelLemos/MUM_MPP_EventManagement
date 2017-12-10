@@ -43,4 +43,8 @@ public class Session {
 	public void subscribe(ISessionObserver observer) {
 		observers.add(observer);
 	}
+	
+	public void clear() {
+		setUser(null);
+	}
 }

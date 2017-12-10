@@ -1,5 +1,6 @@
 package edu.mum.eventmanagement;
 
+import edu.mum.eventmanagement.models.Host;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,6 +64,19 @@ public class Menu extends Application implements ISessionObserver {
     	advertisement.show();
     }
     
+    @FXML protected void handleCreateScheduleAction(ActionEvent event) {
+    	if(
+			(Session.getInstance().getUser() == null) || 
+			(!Session.getInstance().getUser().hasRole(Host.class))
+		) {
+    		Window.error("Denied", "You have no permission to access this function");
+    		return;
+    	}
+    	
+    	Window schedule = new Window("createSchedule", "New Schedule", 960, 600);
+    	schedule.show();
+    }
+    
     @FXML protected void handleRegisterHostAction(ActionEvent event) {
     	Window createHost = new Window("createHost", "New Host", 740, 410);
     	createHost.show();
@@ -74,7 +88,7 @@ public class Menu extends Application implements ISessionObserver {
     }
     
     @FXML protected void handleLogoutAction(ActionEvent event) {
-    	
+    	Session.getInstance().clear();
     }
     
     @FXML protected void handleInviteGuestAction(ActionEvent event) {
@@ -89,7 +103,11 @@ public class Menu extends Application implements ISessionObserver {
 
 	@Override
 	public void onUserChange() {
-		lblCurrentUserInstance.setText(Session.getInstance().getUser().getUsername());
+		if(Session.getInstance().getUser() == null) {
+			lblCurrentUserInstance.setText("");
+		}else {
+			lblCurrentUserInstance.setText(Session.getInstance().getUser().getUsername());
+		}
 	}
     
 }

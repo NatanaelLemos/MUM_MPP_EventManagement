@@ -15,7 +15,12 @@ public class Food extends Activity {
     )
 	private List<Ingredient> ingredients;
 	
-	public Food() {
+    Food(){
+    	
+    }
+    
+	public Food(String name) {
 		ingredients = new ArrayList<Ingredient>();
+		setName(name);
 	}
 }

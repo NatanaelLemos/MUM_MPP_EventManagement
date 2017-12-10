@@ -66,10 +66,11 @@ public class Schedule {
     //private  SimpleObjectProperty<EditButton> editButton;
 	Schedule() {
 	}
-	public Schedule(String timeStart, String timeEnd, Event event) {
+	public Schedule(String timeStart, String timeEnd, Event event, Activity activity) {
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
 		this.event = event;
+		this.activity = activity;
 		//editButton = new SimpleObjectProperty(new EditButton(this.timeStart));
 	}
 	
@@ -85,6 +86,18 @@ public class Schedule {
 		return this.timeEnd;
 	}
 	
+	public String getActivityName() {
+		if(activity == null) {
+			return "";
+		}
+		return activity.getName();
+	}
 	
-
+	public String getActivityType() {
+		if(activity == null) {
+			return "";
+		}
+		
+		return activity.getClass().getSimpleName();
+	}
 }

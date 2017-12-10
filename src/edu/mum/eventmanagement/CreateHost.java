@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 public class CreateHost {
 	private UserController ctrl = new UserController();
 
+	@FXML protected Pane hostPane;
 	@FXML protected TextField txtEmail;
 	@FXML protected TextField txtUsername;
 	@FXML protected PasswordField txtPassword;
@@ -53,6 +55,7 @@ public class CreateHost {
 
 		ctrl.createHost(new User(txtUsername.getText(), txtEmail.getText(), txtPassword.getText(), cbxCountry.getValue()));
 		Window.alert("Success", "Host created");
+		Window.close(hostPane);
 	}
 
 	private boolean isValid() {

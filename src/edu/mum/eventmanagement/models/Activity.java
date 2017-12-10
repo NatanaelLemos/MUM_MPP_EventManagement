@@ -11,17 +11,11 @@ public abstract class Activity {
 	
 	@Column(length=255)
 	private String name;
-	
-	/**
-	 * @return the name
-	 */
+
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -31,5 +25,9 @@ public abstract class Activity {
 	
 	public Activity() {
 		schedules = new ArrayList<Schedule>();
+	}
+	
+	public String getDescription() {
+		return getName() + " (" + getClass().getSimpleName() + ")";
 	}
 }
