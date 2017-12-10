@@ -46,7 +46,7 @@ public class ApproveEvent {
 	    
 	public void initialize() {
 		// TODO Auto-generated method stub		
-		displayTblAdvertisements(false);
+		displayTblSchedule(false);
 			
 		WindowUtils.setDateColumn(colEventDate);
 		WindowUtils.setDateColumn(colEventDueDate);
@@ -66,7 +66,7 @@ public class ApproveEvent {
 		});
 	}
 	
-	private void displayTblAdvertisements(boolean isVisible) {
+	private void displayTblSchedule(boolean isVisible) {
 		tblScheduler.setVisible(isVisible);
 	}
 	
@@ -79,9 +79,9 @@ public class ApproveEvent {
 		System.out.println(ss.size());
 		if(ss.size() > 0) {
 		tblScheduler.getItems().setAll(ss);
-		displayTblAdvertisements(true);
+		displayTblSchedule(true);
 		} else {
-			displayTblAdvertisements(false);
+			displayTblSchedule(false);
 		}
 	}
 	
