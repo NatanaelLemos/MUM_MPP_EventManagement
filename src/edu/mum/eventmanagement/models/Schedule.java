@@ -29,11 +29,11 @@ public class Schedule {
 	
 	private ScheduleState state;
 	
-	@OneToMany(
-	        mappedBy = "schedule", 
-	        cascade = CascadeType.ALL, 
-	        orphanRemoval = true
-	    )
+//	@OneToMany(
+//	        mappedBy = "schedule", 
+//	        cascade = CascadeType.ALL, 
+//	        orphanRemoval = true
+//	    )
 	private List<Vote> votes;
 	
     /**
