@@ -44,6 +44,9 @@ public class Vote {
 	@FXML protected ToggleGroup toggleGr1 = new ToggleGroup();
 	@FXML protected void voteAction(ActionEvent event) {
 		
+		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
+		//sc.getVotes().add(Session.getInstance().getUser().getRoles())
+		
 		Window.alert("Event created", "Thanks for your Voted");
 	}
 	
@@ -55,12 +58,9 @@ public class Vote {
 		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
 		ScheduleRepository sr = new ScheduleRepository();
 		List<Schedule> scs = sr.getAll();
-		tblScheduler.getItems().setAll(scs);
-		System.out.println(scs.size());
-		
-		//toggleGr1.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> 
-        //System.out.println("Selected toggle changed from "+oldToggle+" to "+newToggle));
-		
+		//tblScheduler.getItems().setAll(scs);
+		//System.out.println(scs.size());
+	
 		WindowUtils.setDateColumn(colEventDate);
 		WindowUtils.setDateColumn(colEventDueDate);
         
@@ -85,19 +85,13 @@ public class Vote {
 		colTimeStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colTimeEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
 		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
-		colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
-
-
+		//colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
 
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
 		if(ss.size() > 0) {
-		tblScheduler.getItems().setAll(ss);
-		
-		
-		} else {
-			
-			
+			tblScheduler.getItems().setAll(ss);	
+		} else {		
 		}
 	}
 }
