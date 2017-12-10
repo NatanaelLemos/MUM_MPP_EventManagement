@@ -20,6 +20,10 @@ public class Schedule {
 	@ManyToOne
 	private Event event;
 	
+	public Event getEvent() {
+		return event;
+	}
+
 	Schedule() {
 	}
 	
@@ -28,4 +32,6 @@ public class Schedule {
 		this.timeEnd = timeEnd;
 		this.event = event;
 	}
+	
+	
 }
