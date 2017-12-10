@@ -59,7 +59,7 @@ public class Window extends Stage {
 		showAlert(AlertType.INFORMATION, title, message);
 	}
 	
-	static void error(String title, String message) {
+	public static void error(String title, String message) {
 		showAlert(AlertType.ERROR, title, message);
 	}
 	

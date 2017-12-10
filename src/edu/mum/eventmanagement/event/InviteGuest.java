@@ -31,15 +31,14 @@ public class InviteGuest {
 	@FXML TextField txtEmail;
 	
 	@FXML protected void inviteGuestAction(ActionEvent event) {
-		//ctrl.InviteGuest(new User(null, txtEmail.getText(), null, null));
-		//ArrayList<String> data = new ArrayList<String>();
-		
-		//colEmail.setCellValueFactory(new PropertyValueFactory<String, String>("colEmail"));
 
-		//data.add("asdf");
-		//tblGuest.getItems().setAll(data);
+		System.out.println(txtEmail.getText());
 		
-		EmailService.inviteGuest(txtEmail.getText());
-		//System.out.println(txtEmail.getText());
+		if(txtEmail.getLength()> 0 ) {
+			EmailService.inviteGuest(txtEmail.getText());
+			Window.alert("Event created", "Invited");
+		} else {
+			Window.error("Event created", "Please input the email");
+		}
 	}
 }
