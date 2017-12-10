@@ -6,38 +6,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-			prefHeight="400.0" prefWidth="801.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-			fx:controller="edu.mum.eventmanagement.Menu">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="801.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.Menu">
   <children>
     <BorderPane focusTraversable="false" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <ToolBar>
+          <items>
+            <Label text="User:" />
+            <Label fx:id="lblCurrentUser" text="" />
+          </items>
+        </ToolBar>
+      </bottom>
       <top>
         <MenuBar>
           <menus>
             <Menu mnemonicParsing="false" text="File">
               <items>
-                <MenuItem mnemonicParsing="false" text="Login" onAction="#handleLoginAction" />
-                <MenuItem mnemonicParsing="false" text="Logout" onAction="#handleLogoutAction" />
-                <MenuItem mnemonicParsing="false" text="Close" onAction="#handleCloseAction" />
+                <MenuItem mnemonicParsing="false" onAction="#handleLoginAction" text="Login" />
+                <MenuItem mnemonicParsing="false" onAction="#handleLogoutAction" text="Logout" />
+                <MenuItem mnemonicParsing="false" onAction="#handleCloseAction" text="Close" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Event">
               <items>
-                <MenuItem mnemonicParsing="false" text="Create Event" onAction="#handleCreateEventAction"/>
-                <MenuItem mnemonicParsing="false" text="Aprove Event" onAction="#handleApproveEventAction"/>
-                <MenuItem mnemonicParsing="false" text="Advertisement" onAction="#handleAdvertisementAction"/>
+                <MenuItem mnemonicParsing="false" onAction="#handleCreateEventAction" text="Create Event" />
+                <MenuItem mnemonicParsing="false" onAction="#handleApproveEventAction" text="Aprove Event" />
+                <MenuItem mnemonicParsing="false" onAction="#handleAdvertisementAction" text="Advertisement" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="User">
               <items>
-                <MenuItem mnemonicParsing="false" text="Register host" onAction="#handleRegisterHostAction"/>
-                <MenuItem mnemonicParsing="false" text="Invite guest" onAction="#handleInviteGuestAction"/>
-                <MenuItem mnemonicParsing="false" text="Vote" onAction="#handleVoteAction"/>
+                <MenuItem mnemonicParsing="false" onAction="#handleRegisterHostAction" text="Register host" />
+                <MenuItem mnemonicParsing="false" onAction="#handleInviteGuestAction" text="Invite guest" />
+                <MenuItem mnemonicParsing="false" onAction="#handleVoteAction" text="Vote" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
               <items>
-                <MenuItem mnemonicParsing="false" text="About" onAction="#handleAboutAction"/>
+                <MenuItem mnemonicParsing="false" onAction="#handleAboutAction" text="About" />
               </items>
             </Menu>
           </menus>
