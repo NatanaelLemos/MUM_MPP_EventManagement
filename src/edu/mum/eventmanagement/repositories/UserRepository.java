@@ -21,6 +21,22 @@ public class UserRepository extends RepositoryBase<User> implements IRepository<
 		try {
 			return query.getSingleResult();
 		} catch (NoResultException e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+
+	public User getByLogin(String email, String cryptPassword) {
+		EntityManager em = HibernateUtil.getEntityManager();
+		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email and u.password = :password",
+				edu.mum.eventmanagement.models.User.class);
+		query.setParameter("email", email);
+		query.setParameter("password", cryptPassword);
+
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(e);
 			return null;
 		}
 	}

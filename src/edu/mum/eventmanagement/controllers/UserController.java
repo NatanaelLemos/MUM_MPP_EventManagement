@@ -5,6 +5,7 @@ import edu.mum.eventmanagement.models.Country;
 import edu.mum.eventmanagement.models.User;
 import edu.mum.eventmanagement.repositories.CountryRepository;
 import edu.mum.eventmanagement.repositories.UserRepository;
+import edu.mum.eventmanagement.services.CryptographyService;
 
 public class UserController {
 	UserRepository userRepository = new UserRepository();
@@ -39,5 +40,10 @@ public class UserController {
 		}else {
 			System.out.println("Existed Email");
 		}
+	}
+
+	public User getUserByLogin(String email, String password) {
+		String cryptPassword = CryptographyService.encrypt(password);
+		return userRepository.getByLogin(email, cryptPassword);
 	}
 }
