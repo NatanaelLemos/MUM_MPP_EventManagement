@@ -32,6 +32,12 @@ public class EmailService {
 		}
 	}
 	
+	public static void inviteGuest(String email) {
+		String mailMsg = 			
+			"<h1>This amazing event is going to happen near you</h1><br/>";
+			sendEmail(email, email, "Invite new guest", mailMsg, "");
+	}
+	
 	private static void sendEmail(String name, String emailTo, String title, String msg, String imgPath) {
 		Email email = new Email();
 

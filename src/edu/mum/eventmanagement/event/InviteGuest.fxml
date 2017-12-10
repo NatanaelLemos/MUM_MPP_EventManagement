@@ -26,7 +26,7 @@
     <Button fx:id="btnInvite" layoutX="549.0" layoutY="282.0" mnemonicParsing="false" onAction="#inviteGuestAction" styleClass="primary" text="Invite" />
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@../../../../../res/guest.png" />
+        <Image url="@../../../../../../res/guest.png" />
       </image>
     </ImageView>
   </children>

@@ -29,10 +29,19 @@ public class Schedule {
 	
 	private ScheduleState state;
 	
+<<<<<<< HEAD
+//	@OneToMany(
+//	        mappedBy = "schedule", 
+//	        cascade = CascadeType.ALL, 
+//	        orphanRemoval = true
+//	    )
+	//private List<Vote> votes;
+=======
 	@OneToMany(
 	        orphanRemoval = true
 	    )
 	private List<Guest> votes;
+>>>>>>> 9a6cc5ea1140e3a4af38bad5367e7caff7741dd0
 	
     /**
 	 * @return the votes
@@ -103,11 +112,6 @@ public class Schedule {
 		return this.timeEnd;
 	}
 	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "host_id")
-	private Host host;
-	
 	public String getActivityName() {
 		if(activity == null) {
 			return "";
@@ -115,6 +119,7 @@ public class Schedule {
 		return activity.getName();
 	}
 	
+<<<<<<< HEAD
 	public String getActivityType() {
 		if(activity == null) {
 			return "";
@@ -122,4 +127,11 @@ public class Schedule {
 		
 		return activity.getClass().getSimpleName();
 	}
+=======
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "host_id")
+	private Host host;
+	
+
+>>>>>>> 9a6cc5ea1140e3a4af38bad5367e7caff7741dd0
 }

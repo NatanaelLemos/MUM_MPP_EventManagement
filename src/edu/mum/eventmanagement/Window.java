@@ -55,7 +55,7 @@ public class Window extends Stage {
 		windowToClose.getScene().getWindow().hide();
 	}
 	
-	static void alert(String title, String message) {
+	public static void alert(String title, String message) {
 		showAlert(AlertType.INFORMATION, title, message);
 	}
 	
