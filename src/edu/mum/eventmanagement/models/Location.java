@@ -16,7 +16,11 @@ public class Location {
 	@Column(length = 255)
 	private String address;
 	
-	@OneToMany
+    @OneToMany(
+        mappedBy = "location", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
 	private List<Event> events;
 	
 	public String getName() {

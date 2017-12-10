@@ -103,7 +103,7 @@ public final class WindowUtils {
 	}
 
 	
-	public static <TEntity> void loadCombobox(ComboBox<TEntity> comboBox, List<TEntity> dataSource, Function<TEntity, ?> keyExtractor) {
+	public static <TEntity> void loadCombobox(ComboBox<TEntity> comboBox, List<TEntity> dataSource, final Function<TEntity, ?> keyExtractor) {
 		comboBox.getItems().clear();
 		comboBox.setConverter(new StringConverter<TEntity>() {
 			@Override public String toString(TEntity object) {

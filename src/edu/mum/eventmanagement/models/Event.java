@@ -23,25 +23,30 @@ public class Event {
 	@Temporal(TemporalType.DATE)
 	private Date dueDate;
 	
-	private EventState state;
-	List<Event> events;
+	private EventState state;	
 	
-	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
 	private Location location;
 	
-	@OneToMany
+    @OneToMany(
+        mappedBy = "event", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
 	private List<Advertisement> advertisements;
 	
-	@OneToMany
+    @OneToMany(
+        mappedBy = "event", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
 	private List<Schedule> schedules;
 
 	
 	public Date getDate() {
 		return this.date;
 	}
-	
-
 	
 	public Location getLocation() {
 		return this.location;
@@ -100,8 +105,6 @@ public class Event {
 		return this.name;
 	}
 	
-
-	
 	public Date getDueDate() {
 		return this.dueDate;
 	}
@@ -112,7 +115,8 @@ public class Event {
 	
 	public List<Event> getListEvent(){
 		EventRepository er = new EventRepository();
-		events = er.getAll();
-		return events;
+		//DON'T STORE VARIABLES INSIDE THE MODELS, OTHERWISE THE JPA WILL CREATE A COLUMN FOR IT IN THE DATABASE
+		//events = er.getAll();
+		return er.getAll();
 	}
 }

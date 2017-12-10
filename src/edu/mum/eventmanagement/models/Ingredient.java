@@ -9,4 +9,8 @@ public class Ingredient {
 	
 	@Column(length=255)
 	private String name;
+	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "food_id")
+	private Food food;
 }

@@ -17,10 +17,12 @@ public class Schedule {
 	
 	private ScheduleState state;
 	
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "activity_id")
 	private Activity activity;
 	
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
 	private Event event;
 	
 	Schedule() {
@@ -30,5 +32,9 @@ public class Schedule {
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
 		this.event = event;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.mum.eventmanagement.models.*;
 import edu.mum.eventmanagement.repositories.*;
+import edu.mum.eventmanagement.services.EmailService;
 
 public class AdvertisementController extends ControllerBase<Advertisement> {
 	
@@ -21,5 +22,6 @@ public class AdvertisementController extends ControllerBase<Advertisement> {
 	public void create(Advertisement ad) {
 		ad.getEvent().addAdvertisement(ad);
 		super.create(ad);
+		EmailService.sendAdvertisement(ad);
 	}
 }

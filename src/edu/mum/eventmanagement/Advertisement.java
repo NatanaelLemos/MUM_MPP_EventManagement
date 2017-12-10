@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import com.sun.java.swing.plaf.windows.resources.windows;
-
 import edu.mum.eventmanagement.controllers.AdvertisementController;
 import edu.mum.eventmanagement.models.AdvertisementType;
 import edu.mum.eventmanagement.models.Event;
