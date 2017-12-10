@@ -8,22 +8,23 @@ public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@Column(length=8)
 	private String timeStart;
+
+	@Column(length=8)
 	private String timeEnd;
 	
 	private ScheduleState state;
 	
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "activity_id")
 	private Activity activity;
 	
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
 	private Event event;
 	
-	public Event getEvent() {
-		return event;
-	}
-
 	Schedule() {
 	}
 	
@@ -33,5 +34,7 @@ public class Schedule {
 		this.event = event;
 	}
 	
-	
+	public int getId() {
+		return this.id;
+	}
 }

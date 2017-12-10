@@ -27,6 +27,8 @@ public class CreateEvent {
 
     @FXML public void initialize() {
 		loadCbxLocation();
+		
+		ctrl.getLocations();
 	}
 	
 	@FXML protected void onDateKeyReleased(KeyEvent event) {

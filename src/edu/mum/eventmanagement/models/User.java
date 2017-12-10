@@ -20,13 +20,22 @@ public class User {
 	@Column(length = 255)
 	private String password;
 	
-	@OneToMany
+	@OneToMany(
+        mappedBy = "user", 
+	    cascade = CascadeType.ALL, 
+	    orphanRemoval = true
+	)
 	private List<UserRole> roles;
 	
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
 	private Country country;
 	
 	public User() {
 		roles = new ArrayList<UserRole>();
+	}
+	
+	public String getEmail() {
+		return this.email;
 	}
 }

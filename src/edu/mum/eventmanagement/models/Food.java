@@ -8,7 +8,11 @@ public class Food extends Activity {
 	@Column(length = 255)
 	private String recipe;
 	
-	@OneToMany
+    @OneToMany(
+        mappedBy = "food", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
 	private List<Ingredient> ingredients;
 	
 	public Food() {

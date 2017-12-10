@@ -1,5 +1,7 @@
 package edu.mum.eventmanagement.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,4 +12,11 @@ public class Country {
 	
 	@Column(length = 255)
 	private String name;
+	
+    @OneToMany(
+        mappedBy = "country", 
+        cascade = CascadeType.ALL, 
+        orphanRemoval = true
+    )
+	private List<User> users;
 }

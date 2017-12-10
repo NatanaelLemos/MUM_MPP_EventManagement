@@ -9,10 +9,13 @@ public class Advertisement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private AdvertisementType type;
+	//can't use field named type
+	private AdvertisementType adType;
 	
 	private String imgLocation;
 	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_id")
 	private Event event;
 	
 	Advertisement(){
@@ -20,7 +23,7 @@ public class Advertisement {
 	}
 	
 	public Advertisement(AdvertisementType type, String imgLocation, Event event) {
-		this.type = type;
+		this.adType = type;
 		this.imgLocation = imgLocation;
 		this.event = event;
 	}
@@ -30,7 +33,7 @@ public class Advertisement {
 	}
 	
 	public AdvertisementType getType() {
-		return this.type;
+		return this.adType;
 	}
 	
 	public String getImgLocation() {
