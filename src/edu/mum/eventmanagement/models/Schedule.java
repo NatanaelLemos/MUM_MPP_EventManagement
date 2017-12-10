@@ -3,6 +3,11 @@ package edu.mum.eventmanagement.models;
 import java.util.*;
 import javax.persistence.*;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
+
 @Entity
 public class Schedule {
 	@Id
@@ -12,26 +17,60 @@ public class Schedule {
 	@Column(length=8)
 	private String timeStart;
 
+	/**
+	 * @param timeStart the timeStart to set
+	 */
+	public void setTimeStart(String timeStart) {
+		this.timeStart = timeStart;
+	}
+
 	@Column(length=8)
 	private String timeEnd;
 	
 	private ScheduleState state;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
+    /**
+	 * @return the state
+	 */
+	public ScheduleState getState() {
+		return state;
+	}
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(ScheduleState state) {
+		this.state = state;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "activity_id")
 	private Activity activity;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
+    /**
+	 * @return the activity
+	 */
+	public Activity getActivity() {
+		return activity;
+	}
+	/**
+	 * @param activity the activity to set
+	 */
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
 	private Event event;
 	
+    //private  SimpleObjectProperty<EditButton> editButton;
 	Schedule() {
 	}
-	
 	public Schedule(String timeStart, String timeEnd, Event event) {
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
 		this.event = event;
+		//editButton = new SimpleObjectProperty(new EditButton(this.timeStart));
 	}
 	
 	public int getId() {
@@ -45,4 +84,7 @@ public class Schedule {
 	public String getTimeEnd() {
 		return this.timeEnd;
 	}
+	
+	
+
 }

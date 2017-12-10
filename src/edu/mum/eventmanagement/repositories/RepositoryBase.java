@@ -60,7 +60,10 @@ public class RepositoryBase<TEntity>  implements IRepository<TEntity> {
 	
 	public TEntity update(TEntity entity) {
 		EntityManager entityManager = HibernateUtil.getEntityManager();
-		return entityManager.merge(entity);
+		entityManager.getTransaction().begin();
+		entityManager.merge(entity);
+		entityManager.getTransaction().commit();
+		return entity;
 	}
 
 }

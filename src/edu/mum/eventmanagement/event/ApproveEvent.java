@@ -13,12 +13,16 @@ import edu.mum.eventmanagement.WindowUtils;
 import edu.mum.eventmanagement.models.Activity;
 import edu.mum.eventmanagement.models.Event;
 import edu.mum.eventmanagement.models.Schedule;
+import edu.mum.eventmanagement.models.ScheduleState;
 import edu.mum.eventmanagement.repositories.ActivityRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
 import edu.mum.eventmanagement.repositories.ScheduleRepository;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -40,7 +44,8 @@ public class ApproveEvent {
 	
 	@FXML protected TableColumn<Schedule, String> colTimeStart;
 	@FXML protected TableColumn<Schedule, String> colTimeEnd;
-
+	@FXML protected TableColumn<Schedule, String> colActivity;
+	@FXML protected TableColumn<Schedule, String> colScheduleState;
 	
 	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 	    
@@ -74,6 +79,9 @@ public class ApproveEvent {
 		
 		colTimeStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colTimeEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
+		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
+		colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
+
 
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
@@ -86,7 +94,19 @@ public class ApproveEvent {
 	}
 	
 
+	@FXML protected void ApproveSchedule(ActionEvent event) {
+		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
+		sc.setState(ScheduleState.approved);
+		ScheduleRepository er = new ScheduleRepository();
+        er.update(sc);
+	}
 	
 	
-	
+	@FXML protected void DeclineSchedule(ActionEvent event) {
+		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
+		sc.setState(ScheduleState.notApproved);
+		ScheduleRepository er = new ScheduleRepository();
+        er.update(sc);
+	}
+		
 }
