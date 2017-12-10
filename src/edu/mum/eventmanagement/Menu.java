@@ -51,4 +51,13 @@ public class Menu extends Application {
     	advertisement.show();
 
     }
+    
+    @FXML protected void handleLoginAction(ActionEvent event) {
+    	Window advertisement = new Window("login", "Login", 500, 300);
+    	advertisement.show();
+    }
+    
+    @FXML protected void handleLooutAction(ActionEvent event) {
+    	
+    }
 }
