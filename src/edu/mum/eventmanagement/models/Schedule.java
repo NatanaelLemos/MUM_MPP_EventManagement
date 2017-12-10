@@ -37,4 +37,12 @@ public class Schedule {
 	public int getId() {
 		return this.id;
 	}
+	
+	public String getTimeStart() {
+		return this.timeStart;
+	}
+	
+	public String getTimeEnd() {
+		return this.timeEnd;
+	}
 }

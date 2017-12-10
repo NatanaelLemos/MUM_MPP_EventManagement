@@ -27,7 +27,7 @@
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="226.0" text="Location" fx:id="colEventLocation" />
           </columns>
           <GridPane.margin>
-            <Insets fx:id="x1" />
+            <Insets fx:id="x11111111" />
           </GridPane.margin>
         </TableView>
         <Button fx:id="btnNewAdvertisement" alignment="CENTER" maxHeight="26.0" maxWidth="50.0" minHeight="26.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleNewAdvertisement" prefHeight="26.0" prefWidth="50.0" text="+" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -78,6 +78,11 @@
             <Insets fx:id="x1" />
           </GridPane.margin>
         </TableView>
+        <Button id="btnRemoveAdvertisement" fx:id="btnResend" alignment="CENTER" maxHeight="26.0" maxWidth="104.0" minHeight="26.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleResendAction" prefHeight="26.0" prefWidth="104.0" text="Resend" GridPane.columnIndex="2" GridPane.rowIndex="2">
+          <GridPane.margin>
+            <Insets left="15.0" />
+          </GridPane.margin>
+        </Button>
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="NEVER" maxWidth="89.0" minWidth="55.0" prefWidth="89.0" />

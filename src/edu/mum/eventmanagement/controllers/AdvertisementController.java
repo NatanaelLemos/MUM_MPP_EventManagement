@@ -22,6 +22,10 @@ public class AdvertisementController extends ControllerBase<Advertisement> {
 	public void create(Advertisement ad) {
 		ad.getEvent().addAdvertisement(ad);
 		super.create(ad);
+		sendEmail(ad);
+	}
+	
+	public void sendEmail(Advertisement ad) {
 		EmailService.sendAdvertisement(ad);
 	}
 }

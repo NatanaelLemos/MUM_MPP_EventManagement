@@ -35,6 +35,7 @@ public class Advertisement {
 	@FXML protected Pane pnlAdvertisement;
 	@FXML protected Button btnNewAdvertisement;
 	@FXML protected Button btnRemoveAdvertisement;
+	@FXML protected Button btnResend;
 	
 	@FXML protected TextField txtImageLocation;
 	@FXML protected ComboBox<AdvertisementType> cbxType;
@@ -57,6 +58,7 @@ public class Advertisement {
 		txtImageLocation.setText("");
 		cbxType.setValue(null);
 		pnlAdvertisement.setVisible(isVisible);
+		btnResend.setVisible(false);
 	}
 	
 	private void loadCbxTypes() {
@@ -91,6 +93,7 @@ public class Advertisement {
 
 		tblAdvertisements.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 		    selectedAd = newSelection;
+		    btnResend.setVisible(true);
 		});
 		
 		displayTblAdvertisements(true);
@@ -158,5 +161,15 @@ public class Advertisement {
 	
 	@FXML protected void handleCancelAction(ActionEvent event) {
 		displayPnlAdvertisement(false);
+	}
+	
+	@FXML protected void handleResendAction(ActionEvent event) {
+		if(selectedAd == null) {
+			Window.error("No advertisement", "No advertisement selected");
+			return;
+		}
+		
+		ctrl.sendEmail(selectedAd);
+		Window.alert("Sent", "Email sent");
 	}
 }

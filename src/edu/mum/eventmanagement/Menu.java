@@ -57,7 +57,7 @@ public class Menu extends Application {
     	advertisement.show();
     }
     
-    @FXML protected void handleLooutAction(ActionEvent event) {
+    @FXML protected void handleLogoutAction(ActionEvent event) {
     	
     }
 }
