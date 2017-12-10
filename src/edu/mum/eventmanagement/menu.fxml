@@ -30,9 +30,9 @@
             <Menu mnemonicParsing="false" text="Event">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleCreateEventAction" text="Create Event" />
-                <MenuItem mnemonicParsing="false" onAction="#handleApproveEventAction" text="Aprove Event" />
                 <MenuItem mnemonicParsing="false" onAction="#handleAdvertisementAction" text="Advertisement" />
                 <MenuItem mnemonicParsing="false" onAction="#handleCreateScheduleAction" text="Create Schedule" />
+                <MenuItem mnemonicParsing="false" onAction="#handleApproveEventAction" text="Aprove Event" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="User">

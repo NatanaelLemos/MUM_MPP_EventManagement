@@ -60,6 +60,9 @@ public class CreateSchedule {
 	
 	private void displayPnlSchedule(boolean isVisible) {
 		pnlSchedule.setVisible(isVisible);
+		txtTimeStart.setText("");
+		txtTimeEnd.setText("");
+		cbxActivities.setValue(null);
 	}
 	
 	private void loadCbxActivities() {
@@ -125,7 +128,7 @@ public class CreateSchedule {
 			return;
 		}
 		
-		ctrl.create(new Schedule(txtTimeStart.getText(), txtTimeEnd.getText(), selectedEvent, cbxActivities.getValue()));
+		ctrl.create(new Schedule(txtTimeStart.getText(), txtTimeEnd.getText(), selectedEvent, cbxActivities.getValue(), Session.getInstance().getUser().getRole(Host.class)));
 		
 		loadSchedules(selectedEvent);
 		displayPnlSchedule(false);
@@ -160,6 +163,17 @@ public class CreateSchedule {
 			}
 			
 			msg.append("No activity selected");
+		}
+		
+		if(
+			(Session.getInstance().getUser() == null) ||
+			(!Session.getInstance().getUser().hasRole(Host.class))
+		) {
+			if(msg.length() > 0) {
+				msg.append("\r\n");
+			}
+			
+			msg.append("Current user has no permission to create schedule");
 		}
 		
 		if(msg.length() > 0) {

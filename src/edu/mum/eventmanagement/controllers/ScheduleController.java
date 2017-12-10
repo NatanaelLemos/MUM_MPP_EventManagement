@@ -15,6 +15,23 @@ public class ScheduleController extends ControllerBase<Schedule> {
 	public ScheduleController() {
 		super(new ScheduleRepository());
 	}
+
+	@Override
+	public void create(Schedule schedule) {
+		schedule.getEvent().addSchedule(schedule);
+		schedule.getActivity().addSchedule(schedule);
+		schedule.getHost().addSchedule(schedule);
+
+		super.create(schedule);
+	}
+	
+	@Override
+	public void delete(Schedule entity) {
+		entity.getEvent().getSchedules().remove(entity);
+		entity.getActivity().getSchedules().remove(entity);
+		entity.getHost().getSchedules().remove(entity);
+		super.delete(entity);
+	}
 	
 	public List<Event> getEvents(){
 		return eventRepository.getAll();

@@ -83,11 +83,12 @@ public class Schedule {
     //private  SimpleObjectProperty<EditButton> editButton;
 	Schedule() {
 	}
-	public Schedule(String timeStart, String timeEnd, Event event, Activity activity) {
+	public Schedule(String timeStart, String timeEnd, Event event, Activity activity, Host host) {
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
 		this.event = event;
 		this.activity = activity;
+		this.host = host;
 		//editButton = new SimpleObjectProperty(new EditButton(this.timeStart));
 	}
 	
@@ -128,5 +129,13 @@ public class Schedule {
 		}
 		
 		return activity.getClass().getSimpleName();
+	}
+	
+	public Event getEvent() {
+		return this.event;
+	}
+	
+	public Host getHost() {
+		return this.host;
 	}
 }
