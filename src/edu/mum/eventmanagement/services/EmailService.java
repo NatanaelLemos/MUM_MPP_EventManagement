@@ -78,4 +78,8 @@ public class EmailService {
 			return null;
 		}
 	}
+
+	public static void sendExpiredDueDate(Event event) {
+		System.out.println("This event will be sent: " + event.getName());
+	}
 }

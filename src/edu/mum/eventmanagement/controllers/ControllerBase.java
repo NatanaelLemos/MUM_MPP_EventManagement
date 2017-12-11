@@ -17,6 +17,10 @@ public class ControllerBase<TEntity> {
 		repository.add(entity);
 	}
 	
+	public void update(TEntity entity) {
+		repository.update(entity);
+	}
+	
 	public void delete(TEntity entity) {
 		repository.delete(entity);
 	}

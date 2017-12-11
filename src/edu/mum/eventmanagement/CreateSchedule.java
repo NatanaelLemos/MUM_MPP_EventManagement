@@ -46,6 +46,7 @@ public class CreateSchedule {
 	
     @FXML public void initialize() {
 		displayTblSchedules(false);
+		displayScheduleActions(false);
 		displayPnlSchedule(false);
 		
 		loadCbxActivities();
@@ -54,6 +55,9 @@ public class CreateSchedule {
 	
 	private void displayTblSchedules(boolean isVisible) {
 		tblSchedules.setVisible(isVisible);
+	}
+	
+	private void displayScheduleActions(boolean isVisible) {
 		btnNewSchedule.setVisible(isVisible);
 		btnRemoveSchedule.setVisible(isVisible);
 	}
@@ -102,6 +106,12 @@ public class CreateSchedule {
 		});
 		
 		displayTblSchedules(true);
+		
+		if(selectedEvent.getState() == EventState.pending) {
+			displayScheduleActions(true);
+		}else {
+			displayScheduleActions(false);
+		}
 	}
 	
 	@FXML protected void handleNewSchedule(ActionEvent event) {

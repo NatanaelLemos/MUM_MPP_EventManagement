@@ -119,4 +119,8 @@ public class Event {
 		//events = er.getAll();
 		return er.getAll();
 	}
+
+	public void setState(EventState eventState) {
+		this.state = eventState;
+	}
 }

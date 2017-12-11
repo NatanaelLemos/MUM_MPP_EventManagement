@@ -21,11 +21,14 @@ public class Menu extends Application implements ISessionObserver {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Session.getInstance().subscribe(this);
-		
+		EventMonitor.monitor();
 		Window mainStage = new Window("menu", "Event Management System", 1000, 700 );
 		stage.setMaximized(true);
 		stage.setScene(mainStage.getScene());
 		stage.setTitle(mainStage.getTitle());
+		
+		stage.setOnCloseRequest(r -> EventMonitor.finish());
+		
 		stage.show();
 	}
 	
@@ -127,4 +130,7 @@ public class Menu extends Application implements ISessionObserver {
     	advertisement.show();
 	}
     
+	@FXML protected void handleTriggerNotifyApprovers(ActionEvent event) {
+		EventMonitor.trigger();
+	}
 }
