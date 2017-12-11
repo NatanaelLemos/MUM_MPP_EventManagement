@@ -22,3 +22,7 @@
 hs_err_pid*
 /bin/
 /target/
+src/edu/mum/eventmanagement/models/Schedule_REMOTE_13720.java
+src/edu/mum/eventmanagement/models/Schedule_LOCAL_13720.java
+src/edu/mum/eventmanagement/models/Schedule_BASE_13720.java
+src/edu/mum/eventmanagement/models/Schedule_BACKUP_13720.java

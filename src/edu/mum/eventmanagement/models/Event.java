@@ -55,6 +55,13 @@ public class Event {
 		return this.location;
 	}
 	
+	public String getStateName() {
+		if(this.state == null) {
+			return ScheduleState.pending.toString();
+		}
+		return this.state.toString();
+	}
+	
 	public String getLocationName() {
 		Location location = getLocation();
 		if(location == null) return "";

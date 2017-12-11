@@ -32,10 +32,13 @@ public class EmailService {
 		}
 	}
 	
-	public static void inviteGuest(String email) {
+	public static void inviteGuest(Event evt, String email) {
 		String mailMsg = 			
-			"<h1>This amazing event is going to happen near you</h1><br/>";
-			sendEmail(email, email, "Invite new guest", mailMsg, "");
+			"<h1>This amazing event is going to happen near you</h1><br/>"+
+					"<h2>" + evt.getName() + "</h2><br />" +
+					"<p>" + evt.getDate().toString() + "</p>" +
+					"<p>at " +evt.getLocationName() + " (" + evt.getLocation().getAddress() + ")</p>";
+			sendEmail(email, email, "Hello new guest", mailMsg, "");
 	}
 	
 	private static void sendEmail(String name, String emailTo, String title, String msg, String imgPath) {

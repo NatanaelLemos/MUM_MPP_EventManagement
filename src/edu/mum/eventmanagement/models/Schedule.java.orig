@@ -108,6 +108,7 @@ public class Schedule {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id")
 	private Host host;
+<<<<<<< HEAD
 	
 	public String getActivityName() {
 		if(activity == null) {
@@ -115,6 +116,16 @@ public class Schedule {
 		}
 		return activity.getName();
 	}
+	
+	public String getStateName() {
+		if(activity == null) {
+			return "";
+		}
+		return activity.getName();
+	}
+=======
+		
+>>>>>>> 88c44dd3ddc426f1156a8a987b34349a4d6bfb87
 	
 	public String getActivityType() {
 		if(activity == null) {

@@ -59,7 +59,7 @@ public class Menu extends Application implements ISessionObserver {
 
     @FXML protected void handleApproveEventAction(ActionEvent eveent) {
     	
-    	Window createEvent = new Window("event/approveEvent", "Approve Event", 840, 500);
+    	Window createEvent = new Window("event/approveEvent", "Approve Event", 840, 550);
     	
     	createEvent.show();
     }
@@ -102,7 +102,7 @@ public class Menu extends Application implements ISessionObserver {
     }
     
     @FXML protected void handleInviteGuestAction(ActionEvent event) {
-    	Window advertisement = new Window("event/InviteGuest", "Invite Guest", 740, 410);
+    	Window advertisement = new Window("event/InviteGuest", "Invite Guest", 800, 410);
     	advertisement.show();
     }
     
