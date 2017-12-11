@@ -138,4 +138,12 @@ public class Schedule {
 	public Host getHost() {
 		return this.host;
 	}
+	
+	public int getVotesQty() {
+		if(this.votes == null) {
+			return 0;
+		}
+		
+		return this.votes.size();
+	}
 }
