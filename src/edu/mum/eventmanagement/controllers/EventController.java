@@ -31,4 +31,8 @@ public class EventController extends ControllerBase<Event> {
 		
 		return  false;
 	}
+	
+	public List<Event> getExpiredDueDate(){
+		return ((EventRepository)getRepository()).getExpiredDueDate();
+	}
 }

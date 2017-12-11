@@ -2,6 +2,8 @@ package edu.mum.eventmanagement.repositories;
 
 import java.util.List;
 
+import edu.mum.eventmanagement.models.Event;
+
 public interface IRepository<TEntity> {
 	public List<TEntity> getAll();
 	
@@ -12,5 +14,4 @@ public interface IRepository<TEntity> {
 	public TEntity get(int id);
 	
 	public TEntity update(TEntity entity);
-
 }

@@ -86,7 +86,7 @@ public class ApproveEvent {
 		
 		colTimeStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colTimeEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
-		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
+		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivityName()));
 		colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
 
 

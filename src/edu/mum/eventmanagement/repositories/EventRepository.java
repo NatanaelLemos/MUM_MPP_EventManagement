@@ -1,10 +1,13 @@
 package edu.mum.eventmanagement.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import edu.mum.eventmanagement.models.Event;
+import edu.mum.eventmanagement.models.EventState;
 import edu.mum.eventmanagement.models.Location;
 
 public class EventRepository extends RepositoryBase<Event> implements IRepository<Event> {
@@ -12,4 +15,14 @@ public class EventRepository extends RepositoryBase<Event> implements IRepositor
 	public EventRepository() {
 		super(Event.class);
 	}	
+
+	public List<Event> getExpiredDueDate(){
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e WHERE e.state = :state and e.dueDate < :duedate", Event.class);
+		query.setParameter("state", EventState.pending);
+		query.setParameter("duedate", new Date());
+		
+		return query.getResultList();
+	}
 }
