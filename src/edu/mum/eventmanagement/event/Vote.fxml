@@ -33,7 +33,7 @@
         <Button fx:id="btnVote" layoutX="487.0" layoutY="383.0" mnemonicParsing="false" onAction="#voteAction" prefWidth="109.0" styleClass="primary" text="Vote" />
         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
           <image>
-            <Image url="@../../../../../../res/thebest.png" />
+            <Image url="@../../../../../../res/best.png" />
           </image>
         </ImageView>
         <TableView fx:id="tblEvents" layoutX="285.0" layoutY="0.0" prefHeight="150.0" prefWidth="531.0">
@@ -46,5 +46,10 @@
         </TableView>
       </children>
     </Pane>
+    <Label fx:id="lblVote" layoutX="442.0" layoutY="441.0" text="Congratulations. You Voted" textFill="#cc0000" visible="false">
+      <font>
+        <Font size="16.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

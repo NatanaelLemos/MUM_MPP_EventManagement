@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,13 +32,13 @@ public class Vote {
 	@FXML protected TableColumn<Event, String> colEventDate;
 	@FXML protected TableColumn<Event, String> colEventDueDate;
 	@FXML protected TableColumn<Event, String> colEventLocation;
-	
-	
-	
+
 	@FXML private TableView<Schedule> tblScheduler;
 	@FXML private TableColumn<Event, String> name;
 	private Event selectedEvent;
 	ObservableList<Event> data;
+	
+	@FXML protected Label lblVote;
 	
 	@FXML protected TableColumn<Schedule, String> colTimeStart;
 	@FXML protected TableColumn<Schedule, String> colTimeEnd;
@@ -66,8 +67,6 @@ public class Vote {
 		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
 		ScheduleRepository sr = new ScheduleRepository();
 		List<Schedule> scs = sr.getAll();
-		//tblScheduler.getItems().setAll(scs);
-		//System.out.println(scs.size());
 	
 		WindowUtils.setDateColumn(colEventDate);
 		WindowUtils.setDateColumn(colEventDueDate);
@@ -99,7 +98,17 @@ public class Vote {
 		System.out.println(ss.size());
 		if(ss.size() > 0) {
 			tblScheduler.getItems().setAll(ss);	
-		} else {		
+			
+			List<Guest> votes = ev.getVotes();
+			
+			Guest guest = Session.getInstance().getUser().getRole(Guest.class);
+			if(votes.contains(guest)) {
+				btnVote.setVisible(false);
+				lblVote.setVisible(true);
+			}
+		} else {
+			
 		}
+		
 	}
 }

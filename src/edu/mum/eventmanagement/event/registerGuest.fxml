@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="hostPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="253.0" prefWidth="803.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.event.registerGuest">
   <children>
-    <Label layoutX="14.0" layoutY="14.0" text="Provide event informations">
+    <Label layoutX="14.0" layoutY="14.0" text="Provide Guest informations">
       <font>
         <Font name="System Bold" size="15.0" />
       </font>
