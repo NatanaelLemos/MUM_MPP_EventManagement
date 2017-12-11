@@ -25,6 +25,7 @@ public class ScheduleController extends ControllerBase<Schedule> {
 		schedule.getHost().addSchedule(schedule);
 
 		super.create(schedule);
+		eventRepository.update(schedule.getEvent());
 	}
 	
 	@Override
