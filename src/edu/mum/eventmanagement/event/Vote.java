@@ -32,6 +32,8 @@ public class Vote {
 	@FXML protected TableColumn<Event, String> colEventDueDate;
 	@FXML protected TableColumn<Event, String> colEventLocation;
 	
+	
+	
 	@FXML private TableView<Schedule> tblScheduler;
 	@FXML private TableColumn<Event, String> name;
 	private Event selectedEvent;
@@ -46,14 +48,14 @@ public class Vote {
 	
 	@FXML protected ToggleGroup toggleGr1 = new ToggleGroup();
 	@FXML protected void voteAction(ActionEvent event) {
-		UserController us = new UserController();
-		
+		ScheduleRepository sr = new ScheduleRepository();
 		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
 		Guest u = Session.getInstance().getUser().getRole(Guest.class);
 		sc.getVotes().add(u);
-		
-		
-		Window.alert("Event created", "Thanks for your Voted");
+		sr.update(sc);
+		Window.alert("Vote", "Thanks for your Voted");
+		tblScheduler.setSelectionModel(null);
+		btnVote.setDisable(true);
 	}
 	
 	
