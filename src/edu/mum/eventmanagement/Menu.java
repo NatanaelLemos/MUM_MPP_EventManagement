@@ -86,6 +86,11 @@ public class Menu extends Application implements ISessionObserver {
     	createHost.show();
     }
     
+    @FXML protected void handleRegisterApproverAction(ActionEvent event) {
+    	Window createApprover = new Window("createApprover", "New Approver", 740, 410);
+    	createApprover.show();    	
+    }
+    
     @FXML protected void handleLoginAction(ActionEvent event) {
     	Window advertisement = new Window("login", "Login", 600, 300);
     	advertisement.show();

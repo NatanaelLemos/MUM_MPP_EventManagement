@@ -40,6 +40,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="User">
               <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleRegisterApproverAction" text="Register approver" />
                 <MenuItem mnemonicParsing="false" onAction="#handleRegisterHostAction" text="Register host" />
                 <MenuItem mnemonicParsing="false" onAction="#handleRegisterGuestAction" text="Register Guest" />
                 <MenuItem mnemonicParsing="false" onAction="#handleInviteGuestAction" text="Invite guest" />
