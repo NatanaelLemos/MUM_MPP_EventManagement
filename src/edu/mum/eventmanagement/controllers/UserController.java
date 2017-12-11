@@ -34,6 +34,18 @@ public class UserController {
 			userRepository.update(user);
 		}
 	}
+	
+	public void createApprover(User approver) {
+		User user = getUserByEmail(approver.getEmail());
+
+		if(user == null) {
+			approver.addRole(new edu.mum.eventmanagement.models.Approver());
+			userRepository.add(approver);
+		}else {
+			user.addRole(new edu.mum.eventmanagement.models.Approver());
+			userRepository.update(user);
+		}
+	}
 		
 	public List<Country> getCountries(){
 		return countryRepository.getAll();

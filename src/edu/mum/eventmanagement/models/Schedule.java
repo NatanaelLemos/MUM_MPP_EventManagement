@@ -132,4 +132,11 @@ public class Schedule {
 		}
 		return this.state.toString();
 	}
+	public int getVotesQty() {
+		if(this.votes == null) {
+			return 0;
+		}
+		
+		return this.votes.size();
+	}
 }

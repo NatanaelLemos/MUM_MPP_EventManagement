@@ -43,6 +43,9 @@ public class Event {
     )
 	private List<Schedule> schedules;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gift_id")
+    private Gift gift;
 	
 	public Date getDate() {
 		return this.date;
@@ -94,6 +97,14 @@ public class Event {
 		}
 		
 		schedules.add(schedule);
+	}
+	
+	public Gift getGift() {
+		return this.gift;
+	}
+	
+	public void setGift(Gift gift) {
+		this.gift = gift;
 	}
 	
 	Event(){

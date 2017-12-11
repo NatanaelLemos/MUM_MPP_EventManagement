@@ -36,10 +36,12 @@
                 <MenuItem mnemonicParsing="false" onAction="#handleAdvertisementAction" text="Advertisement" />
                 <MenuItem mnemonicParsing="false" onAction="#handleCreateScheduleAction" text="Create Schedule" />
                 <MenuItem mnemonicParsing="false" onAction="#handleApproveEventAction" text="Aprove Event" />
+                <MenuItem mnemonicParsing="false" onAction="#handlePrizeAction" text="Prize to the winner" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="User">
               <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleRegisterApproverAction" text="Register approver" />
                 <MenuItem mnemonicParsing="false" onAction="#handleRegisterHostAction" text="Register host" />
                 <MenuItem mnemonicParsing="false" onAction="#handleRegisterGuestAction" text="Register Guest" />
                 <MenuItem mnemonicParsing="false" onAction="#handleInviteGuestAction" text="Invite guest" />

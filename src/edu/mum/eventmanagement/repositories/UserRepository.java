@@ -1,5 +1,8 @@
 package edu.mum.eventmanagement.repositories;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -39,5 +42,12 @@ public class UserRepository extends RepositoryBase<User> implements IRepository<
 			System.out.println(e);
 			return null;
 		}
+	}
+
+	public List<User> getApprovers() {
+		List<User> users = getAll();
+		return users.stream()
+				.filter(u -> u.hasRole(Approver.class))
+				.collect(Collectors.toList());
 	}
 }

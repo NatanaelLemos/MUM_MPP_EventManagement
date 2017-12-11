@@ -1,6 +1,7 @@
 package edu.mum.eventmanagement;
 
 import edu.mum.eventmanagement.models.Host;
+import edu.mum.eventmanagement.models.Approver;
 import edu.mum.eventmanagement.models.Guest;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -86,6 +87,11 @@ public class Menu extends Application implements ISessionObserver {
     	createHost.show();
     }
     
+    @FXML protected void handleRegisterApproverAction(ActionEvent event) {
+    	Window createApprover = new Window("createApprover", "New Approver", 740, 410);
+    	createApprover.show();    	
+    }
+    
     @FXML protected void handleLoginAction(ActionEvent event) {
     	Window advertisement = new Window("login", "Login", 600, 300);
     	advertisement.show();
@@ -114,6 +120,24 @@ public class Menu extends Application implements ISessionObserver {
     	advertisement.show();
     	
     	
+    }
+    
+    @FXML protected void handlePrizeAction(ActionEvent event) {
+    	if(Session.getInstance().getUser() == null) {
+    		Window.error("Denied", "You don't have permission to access this function");
+    		return;
+    	}
+    	
+    	boolean hasHostRole = Session.getInstance().getUser().hasRole(Host.class);
+    	boolean hasApproverRole = Session.getInstance().getUser().hasRole(Approver.class);
+    	
+    	if(!hasHostRole && !hasApproverRole){
+    		Window.error("Denied", "You don't have permission to access this function");
+    		return;
+    	}
+        	
+    	Window prize = new Window("gift", "Prize for the winner", 900, 500);
+    	prize.show();
     }
 
 	@Override

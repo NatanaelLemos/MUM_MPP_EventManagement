@@ -14,8 +14,8 @@ import org.simplejavamail.mailer.config.TransportStrategy;
 
 public class EmailService {
 	private static String smtp = "smtp.gmail.com";
-	private static String emailFrom = "moe.szyslak.simpsons@gmail.com";
-	private static String password = "P@55w0rd";
+	private static String emailFrom = "<<email goes here>>";
+	private static String password = "<<Password goes here>>";
 	private static int port = 587;
 		
 	public static void sendAdvertisement(Advertisement ad) {
@@ -51,7 +51,7 @@ public class EmailService {
 		email.setSubject(title);
 		email.setTextHTML(msg);
 		
-		if(imgPath.length() > 0) {
+		if(imgPath != null && imgPath.length() > 0) {
 			String mimeType = "image/jpeg";
 			String extension = ".jpg";
 			
@@ -83,6 +83,14 @@ public class EmailService {
 	}
 
 	public static void sendExpiredDueDate(Event event) {
-		System.out.println("This event will be sent: " + event.getName());
+		String msg = 
+			"<h1>The following event is waiting for your approval</h1>" +
+			"<h2>" + event.getName() + "</h2>" + 
+			"<p>" + event.getDate().toString() + "</p>" +
+			"<p>at " + event.getLocationName() + " (" + event.getLocation().getAddress() + ")</p>";
+		
+		for(User user : new UserRepository().getApprovers()) {			
+			sendEmail(user.getUsername(), user.getEmail(), "Event pending for approval", msg, null);
+		}
 	}
 }
