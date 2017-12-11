@@ -35,6 +35,7 @@ public class InviteGuest {
 	//private UserController ctrl = new UserController();
 	EventRepository eveRepo;
 	public void initialize() {
+		txtEmail.setFocusTraversable(true);
 		eveRepo = new EventRepository();
 		WindowUtils.setDateColumn(colEventDate);
 		WindowUtils.setDateColumn(colEventDueDate);
@@ -46,6 +47,9 @@ public class InviteGuest {
         
         List<Event> events = eveRepo.getAll();
 		tblEvents.getItems().setAll(events);
+		if(events.size()> 0 ) {
+			tblEvents.getSelectionModel().selectFirst();
+		}
 	}
 
 	@FXML private TableView<String> tblGuest;
@@ -61,6 +65,8 @@ public class InviteGuest {
 			Event newEv = tblEvents.getSelectionModel().getSelectedItem();
 			EmailService.inviteGuest(newEv, txtEmail.getText());
 			Window.alert("Event created", "Invited");
+			txtEmail.clear();
+			txtEmail.setFocusTraversable(true);
 		} else {
 			Window.error("Event created", "Please input the email");
 		}
