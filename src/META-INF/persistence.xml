@@ -19,7 +19,7 @@
 		<class>edu.mum.eventmanagement.models.UserRole</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://107.174.239.78:3306/dzungdb"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://107.174.239.78:3306/dzungdb?useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
 			<property name="javax.persistence.jdbc.user" value="dzung"/>
 			<property name="javax.persistence.jdbc.password" value="pA55hhh000"/>
 		</properties>
