@@ -26,7 +26,7 @@
         </Label>
         <ImageView fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
           <image>
-            <Image url="@../../../../../res/host.png" />
+            <Image url="@../../../../../../res/guest.png" />
           </image>
           <GridPane.margin>
             <Insets fx:id="x2" />

@@ -108,20 +108,7 @@ public class Schedule {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id")
 	private Host host;
-	
-//	public String getActivityName() {
-//		if(ScheduleState == null) {
-//			return "";
-//		}
-//		return activity.getName();
-//	}
-	
-	public String getStateName() {
-		if(activity == null) {
-			return "";
-		}
-		return activity.getName();
-	}
+		
 	
 	public String getActivityType() {
 		if(activity == null) {
@@ -137,5 +124,12 @@ public class Schedule {
 	
 	public Host getHost() {
 		return this.host;
+	}
+	
+	public String getStateName() {
+		if(this.state == null) {
+			return ScheduleState.pending.toString();
+		}
+		return this.state.toString();
 	}
 }

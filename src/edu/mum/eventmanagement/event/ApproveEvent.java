@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import edu.mum.eventmanagement.WindowUtils;
 import edu.mum.eventmanagement.models.Activity;
 import edu.mum.eventmanagement.models.Event;
+import edu.mum.eventmanagement.models.EventState;
 import edu.mum.eventmanagement.models.Schedule;
 import edu.mum.eventmanagement.models.ScheduleState;
 import edu.mum.eventmanagement.repositories.ActivityRepository;
@@ -36,6 +37,7 @@ public class ApproveEvent {
 	@FXML protected TableColumn<Event, String> colEventDate;
 	@FXML protected TableColumn<Event, String> colEventDueDate;
 	@FXML protected TableColumn<Event, String> colEventLocation;
+	@FXML protected TableColumn<Event, String> colEventState;
 	
 	@FXML private TableView<Schedule> tblScheduler;
 	@FXML private TableView<Activity> tableViewActivity;
@@ -43,10 +45,13 @@ public class ApproveEvent {
 	private Event selectedEvent;
 	ObservableList<Event> data;
 	
+	EventRepository eveRepo;
+	
 	@FXML protected TableColumn<Schedule, String> colTimeStart;
 	@FXML protected TableColumn<Schedule, String> colTimeEnd;
 	@FXML protected TableColumn<Schedule, String> colActivity;
 	@FXML protected TableColumn<Schedule, String> colScheduleState;
+	
 	
 	@FXML protected Button btnApprove;
 	@FXML protected Button btnDecline;
@@ -54,6 +59,8 @@ public class ApproveEvent {
 	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 	    
 	public void initialize() {
+		
+		eveRepo = new EventRepository();
 		// TODO Auto-generated method stub		
 		displayTblSchedule(false);
 		btnApprove.setVisible(false);
@@ -66,9 +73,11 @@ public class ApproveEvent {
         colEventDate.setCellValueFactory(new PropertyValueFactory<Event, String>("date"));
         colEventDueDate.setCellValueFactory(new PropertyValueFactory<Event, String>("dueDate"));
         colEventLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("locationName"));
+        colEventState.setCellValueFactory(new PropertyValueFactory<Event, String>("stateName"));
+        
 		
-        EventRepository er = new EventRepository();
-        List<Event> events = er.getAll();
+        //EventRepository er = new EventRepository();
+        List<Event> events = eveRepo.getAll();
 		tblEvents.getItems().setAll(events);
 
 		tblEvents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -87,7 +96,7 @@ public class ApproveEvent {
 		colTimeStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colTimeEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
 		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
-		//colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
+		colScheduleState.setCellValueFactory(new PropertyValueFactory<Schedule, String>("StateName"));
 		
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
@@ -95,24 +104,26 @@ public class ApproveEvent {
 		tblScheduler.getItems().setAll(ss);
 		displayTblSchedule(true);
 		
-		btnApprove.setVisible(true);
-		btnDecline.setVisible(true);
-		
+		tblScheduler.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			btnApprove.setVisible(true);
+			btnDecline.setVisible(true);	
+		});
+
 		} else {
 			displayTblSchedule(false);
 			
 			btnApprove.setVisible(false);
 			btnDecline.setVisible(false);
-			
 		}
 	}
 	
-
 	@FXML protected void ApproveSchedule(ActionEvent event) {
 		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
 		sc.setState(ScheduleState.approved);
 		ScheduleRepository er = new ScheduleRepository();
         er.update(sc);
+        		
+        updateEventnScheduleGrid();
 	}
 	
 	
@@ -121,6 +132,40 @@ public class ApproveEvent {
 		sc.setState(ScheduleState.notApproved);
 		ScheduleRepository er = new ScheduleRepository();
         er.update(sc);
+        
+        updateEventnScheduleGrid();
+
+	}
+	
+	void updateEventnScheduleGrid() {
+		// update again the schedule grid
+		Event newEv = tblEvents.getSelectionModel().getSelectedItem();
+		List<edu.mum.eventmanagement.models.Schedule> ss = newEv.getSchedules();
+		System.out.println(ss.size());
+		if(ss.size() > 0) {
+		tblScheduler.getItems().setAll(ss);
+		}
+		
+		int approveCount = 0;
+ 		int notApproveCount = 0;
+ 		for(Schedule ssc : ss){
+ 			if(ssc.getState() == ScheduleState.approved ) {
+ 				approveCount ++;
+ 			} else if (ssc.getState() == ScheduleState.notApproved) {
+ 				notApproveCount++;
+ 			}
+ 		}
+ 		
+ 		if(approveCount == ss.size()) {
+ 			newEv.setState(EventState.approved);
+ 		} else if(notApproveCount == ss.size()) {
+ 			newEv.setState(EventState.notApproved);
+ 		}
+ 		// update event
+ 		eveRepo.update(newEv);
+ 		
+ 		List<Event> events = eveRepo.getAll();
+		tblEvents.getItems().setAll(events);
 	}
 	
 	
