@@ -112,6 +112,11 @@ public class Menu extends Application implements ISessionObserver {
 			lblCurrentUserInstance.setText(Session.getInstance().getUser().getUsername());
 		}
 	}
+	
+	@FXML protected void handleRegisterGuestAction(ActionEvent event) {
+		Window advertisement = new Window("event/registerGuest", "Register Guest", 740, 410);
+    	advertisement.show();
+	}
     
 	@FXML protected void handleTriggerNotifyApprovers(ActionEvent event) {
 		EventMonitor.trigger();

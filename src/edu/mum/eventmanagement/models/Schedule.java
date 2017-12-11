@@ -109,7 +109,14 @@ public class Schedule {
     @JoinColumn(name = "host_id")
 	private Host host;
 	
-	public String getActivityName() {
+//	public String getActivityName() {
+//		if(ScheduleState == null) {
+//			return "";
+//		}
+//		return activity.getName();
+//	}
+	
+	public String getStateName() {
 		if(activity == null) {
 			return "";
 		}

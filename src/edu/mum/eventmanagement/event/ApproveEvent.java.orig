@@ -86,9 +86,17 @@ public class ApproveEvent {
 		
 		colTimeStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colTimeEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
+<<<<<<< HEAD
+		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivityName()));
+		colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
+
+
+
+=======
 		colActivity.setCellValueFactory(cellData ->  new SimpleStringProperty(cellData.getValue().getActivity().getName()));
 		//colScheduleState.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getState().toString()));
 		
+>>>>>>> 93c5c896b807914e27d830241e6101910bd0f583
 		List<edu.mum.eventmanagement.models.Schedule> ss = ev.getSchedules();
 		System.out.println(ss.size());
 		if(ss.size() > 0) {
