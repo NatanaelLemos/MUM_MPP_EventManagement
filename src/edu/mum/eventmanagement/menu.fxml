@@ -17,9 +17,6 @@
           </items>
         </ToolBar>
       </bottom>
-      <right>
-        <Button mnemonicParsing="false" onAction="#handleTriggerNotifyApprovers" prefHeight="26.0" prefWidth="242.0" styleClass="warning" text="Trigger Notify Approvers" />
-      </right>
       <top>
         <MenuBar>
           <menus>

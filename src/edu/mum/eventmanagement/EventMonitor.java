@@ -54,14 +54,14 @@ public class EventMonitor extends Thread {
 	
 	@Override
     public void run() {
-		/*while(instance.running) {
+		while(instance.running) {
 			try {
 				checkEvents();
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 			}catch(Exception e) {
 				System.out.println(e);
 			}
-		}*/
+		}
     }
 	
 	private void checkEvents() {

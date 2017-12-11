@@ -36,4 +36,16 @@ public class Gift {
     	
     	events.add(event);
     }
+    
+    public String getDescription() {
+    	return description;
+    }
+    
+    Gift(){
+    	
+    }
+    
+    public Gift(String description) {
+    	this.description = description;
+    }
 }

@@ -10,16 +10,16 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="scPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.Gift">
+<AnchorPane id="AnchorPane" fx:id="scPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="960.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.mum.eventmanagement.Prize">
   <children>
     <Label layoutX="14.0" layoutY="14.0" text="Select one event to give the prize">
       <font>
-        <Font name="System Bold" size="15.0" />
+        <Font name="System Bold" size="15.0" fx:id="x2" />
       </font>
     </Label>
     <GridPane alignment="CENTER" blendMode="SRC_OVER" prefHeight="575.0" prefWidth="987.0" style="" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="39.0">
       <children>
-        <TableView fx:id="tblEvents" maxHeight="180.0" maxWidth="890.0" minHeight="180.0" minWidth="890.0" prefHeight="180.0" prefWidth="890.0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <TableView fx:id="tblEvents" maxHeight="170.0" maxWidth="890.0" minHeight="170.0" minWidth="890.0" prefHeight="170.0" prefWidth="890.0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
           <columns>
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="210.0" text="Event Name" fx:id="colEventName" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="140.0" text="Date" fx:id="colEventDate" />
@@ -30,19 +30,19 @@
             <Insets fx:id="x11111111" />
           </GridPane.margin>
         </TableView>
-        <GridPane id="pnlAdvertisement" fx:id="pnlSchedule" maxHeight="125.0" maxWidth="890.0" minHeight="125.0" minWidth="890.0" prefHeight="125.0" prefWidth="890.0" style="" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+        <GridPane id="pnlAdvertisement" fx:id="pnlSchedule" maxHeight="95.0" maxWidth="890.0" minHeight="95.0" minWidth="890.0" prefHeight="95.0" prefWidth="890.0" style="" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
           <children>
-            <Label text="Activity:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label text="Prize:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
               <GridPane.margin>
                 <Insets right="4.0" fx:id="x1" />
               </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#handleSaveAction" styleClass="primary" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#handleSaveAction" styleClass="primary" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
               <GridPane.margin>
                 <Insets right="10.0" />
               </GridPane.margin>
             </Button>
-            <ComboBox fx:id="cbxActivities" prefWidth="644.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ComboBox id="cbxActivities" fx:id="cbxGifts" prefWidth="644.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Item 1" />
@@ -51,6 +51,13 @@
                 </FXCollections>
               </items>
             </ComboBox>
+            <Button mnemonicParsing="false" onAction="#handleNewPrizeAction" text="+" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="The winner is:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+              <GridPane.margin>
+                <Insets right="4.0" fx:id="x1" />
+              </GridPane.margin>
+            </Label>
+            <Label id="lblWinnerNameInstance" fx:id="lblWinnerName" font="$x2" text="Winner" GridPane.columnIndex="1" GridPane.rowIndex="0" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="434.0" minWidth="10.0" prefWidth="131.0" />
@@ -58,13 +65,12 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="705.0" minWidth="10.0" prefWidth="115.0" />
           </columnConstraints>
           <rowConstraints>
-            <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
           </rowConstraints>
         </GridPane>
-        <TableView fx:id="tblSchedules" maxHeight="165.0" maxWidth="890.0" minHeight="165.0" minWidth="890.0" prefHeight="165.0" prefWidth="890.0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <TableView fx:id="tblSchedules" maxHeight="160.0" maxWidth="890.0" minHeight="160.0" minWidth="890.0" prefHeight="160.0" prefWidth="890.0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
           <columns>
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="Start at" fx:id="colScStart" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="End at" fx:id="colScEnd" />
@@ -82,10 +88,9 @@
         <ColumnConstraints hgrow="ALWAYS" maxWidth="906.0" minWidth="10.0" prefWidth="781.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="207.0" vgrow="ALWAYS" />
-        <RowConstraints maxHeight="198.0" minHeight="10.0" prefHeight="179.0" vgrow="ALWAYS" />
-        <RowConstraints fillHeight="true" maxHeight="139.0" minHeight="33.0" prefHeight="33.0" vgrow="NEVER" />
-        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="139.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="207.0" minHeight="10.0" prefHeight="179.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="198.0" minHeight="10.0" prefHeight="167.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="100.0" vgrow="NEVER" />
       </rowConstraints>
     </GridPane>
   </children>

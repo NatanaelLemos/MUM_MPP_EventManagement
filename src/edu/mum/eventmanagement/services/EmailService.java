@@ -14,8 +14,8 @@ import org.simplejavamail.mailer.config.TransportStrategy;
 
 public class EmailService {
 	private static String smtp = "smtp.gmail.com";
-	private static String emailFrom = "<<email goes here>>";
-	private static String password = "<<Password goes here>>";
+    private static String emailFrom = "<<Email goes here>>";
+    private static String password = "<<Password goes here>>";
 	private static int port = 587;
 		
 	public static void sendAdvertisement(Advertisement ad) {

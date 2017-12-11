@@ -5,12 +5,14 @@ import java.util.List;
 import edu.mum.eventmanagement.models.*;
 import edu.mum.eventmanagement.repositories.ActivityRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
+import edu.mum.eventmanagement.repositories.GiftRepository;
 import edu.mum.eventmanagement.repositories.ScheduleRepository;
 
 public class ScheduleController extends ControllerBase<Schedule> {
 
 	private EventRepository eventRepository = new EventRepository();
 	private ActivityRepository activityRepository = new ActivityRepository();
+	private GiftRepository giftRepository = new GiftRepository();
 	
 	public ScheduleController() {
 		super(new ScheduleRepository());
@@ -39,5 +41,9 @@ public class ScheduleController extends ControllerBase<Schedule> {
 	
 	public List<Activity> getActivities(){
 		return activityRepository.getAll();
+	}
+	
+	public List<Gift> getGifts(){
+		return giftRepository.getAll();
 	}
 }

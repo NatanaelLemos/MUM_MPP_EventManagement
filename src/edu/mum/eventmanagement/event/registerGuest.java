@@ -4,6 +4,7 @@ import edu.mum.eventmanagement.Window;
 import edu.mum.eventmanagement.WindowUtils;
 import edu.mum.eventmanagement.controllers.UserController;
 import edu.mum.eventmanagement.models.Country;
+import edu.mum.eventmanagement.models.Guest;
 import edu.mum.eventmanagement.models.Host;
 import edu.mum.eventmanagement.models.User;
 import javafx.event.ActionEvent;
@@ -89,7 +90,7 @@ public class registerGuest {
 		}
 
 		User user = ctrl.getUserByEmail(txtEmail.getText());
-		if(user != null && user.hasRole(Host.class)) {
+		if(user != null && user.hasRole(Guest.class)) {
 			if(msg.length() > 0) {
 				msg.append("\r\n");
 			}

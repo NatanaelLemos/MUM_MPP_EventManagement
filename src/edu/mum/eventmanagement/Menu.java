@@ -136,7 +136,7 @@ public class Menu extends Application implements ISessionObserver {
     		return;
     	}
         	
-    	Window prize = new Window("gift", "Prize for the winner", 900, 500);
+    	Window prize = new Window("prize", "Prize for the winner", 900, 500);
     	prize.show();
     }
 
@@ -152,9 +152,5 @@ public class Menu extends Application implements ISessionObserver {
 	@FXML protected void handleRegisterGuestAction(ActionEvent event) {
 		Window advertisement = new Window("event/registerGuest", "Register Guest", 740, 410);
     	advertisement.show();
-	}
-    
-	@FXML protected void handleTriggerNotifyApprovers(ActionEvent event) {
-		EventMonitor.trigger();
 	}
 }

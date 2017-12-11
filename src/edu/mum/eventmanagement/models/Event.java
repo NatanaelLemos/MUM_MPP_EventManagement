@@ -134,4 +134,17 @@ public class Event {
 	public void setState(EventState eventState) {
 		this.state = eventState;
 	}
+	
+	public List<Guest> getVotes(){
+		List<Guest> guests = new ArrayList<Guest>();
+		
+		for(Schedule s : schedules) {
+			for(Guest g : s.getVotes()) {
+				guests.add(g);
+			}
+		}
+		
+		
+		return guests;
+	}
 }
