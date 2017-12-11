@@ -1,7 +1,6 @@
 package edu.mum.eventmanagement;
 
 import edu.mum.eventmanagement.controllers.GiftController;
-import edu.mum.eventmanagement.controllers.LocationController;
 import edu.mum.eventmanagement.models.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;

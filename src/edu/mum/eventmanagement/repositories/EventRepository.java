@@ -2,6 +2,7 @@ package edu.mum.eventmanagement.repositories;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -24,5 +25,13 @@ public class EventRepository extends RepositoryBase<Event> implements IRepositor
 		query.setParameter("duedate", new Date());
 		
 		return query.getResultList();
+	}
+	
+	public List<Event> getEventsWithoutPrize(){
+		List<Event> events = getAll();
+		
+		return events.stream()
+				.filter(e -> e.getGift() == null)
+				.collect(Collectors.toList());
 	}
 }

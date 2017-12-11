@@ -43,7 +43,7 @@ public class Prize {
 	
     @FXML public void initialize() {
 		displayTblSchedules(false);		
-		loadCbxActivities();
+		loadCbxGifts();
 		loadEvents();
 	}
 	
@@ -53,7 +53,7 @@ public class Prize {
 		cbxGifts.setValue(null);
 	}
 	
-	private void loadCbxActivities() {
+	private void loadCbxGifts() {
 		List<edu.mum.eventmanagement.models.Gift> gifts = ctrl.getGifts();
 		WindowUtils.loadCombobox(cbxGifts, gifts, i -> i.getDescription());
 	}
@@ -67,7 +67,7 @@ public class Prize {
         colEventDueDate.setCellValueFactory(new PropertyValueFactory<Event, String>("dueDate"));
         colEventLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("locationName"));
         		
-		List<Event> events = ctrl.getEvents();
+		List<Event> events = ctrl.getEventsWithoutPrize();
 		tblEvents.getItems().setAll(events);
 		
 		tblEvents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -77,6 +77,10 @@ public class Prize {
 	}
 	
 	private void loadSchedules(Event event) {
+		if(event == null) {
+			return;
+		}
+		
 		colScStart.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeStart"));
 		colScEnd.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeEnd"));
 		colScActivityName.setCellValueFactory(new PropertyValueFactory<Schedule, String>("activityName"));
@@ -88,13 +92,11 @@ public class Prize {
 		colScVotes.setComparator(colScVotes.getComparator().reversed());
 		tblSchedules.getSortOrder().add(colScVotes);
 		
-		Schedule winner = getWinner(scs);
-		
-		//This should work but don't thanks to java
-		//Schedule winner = scs.stream().sorted((a,b) -> a.getVotesQty() - b.getVotesQty()).findFirst().orElse(null);
-
-		lblWinnerName.setText(winner.getActivityName());
-		displayTblSchedules(true);
+		if(scs.size() > 0) {
+			Schedule winner = getWinner(scs);
+			lblWinnerName.setText(winner.getActivityName());
+			displayTblSchedules(true);
+		}
 	}
 	
 	private Schedule getWinner(List<Schedule> schedules) {
@@ -112,18 +114,42 @@ public class Prize {
 	}
 	
 	@FXML protected void handleNewPrizeAction(ActionEvent event) {
-		
+		Window createLocation = new Window("createGift", "New Gift", 710, 380);
+		createLocation.setOnHiding(e -> loadCbxGifts());
+		createLocation.showAndWait();
 	}
 	
 	@FXML protected void handleSaveAction(ActionEvent event) {
 		if(!isValid()) {
 			return;
 		}
+		
+		selectedEvent.setGift(cbxGifts.getValue());
+		ctrl.updateEvent(selectedEvent);
+		
+		displayTblSchedules(false);
+		loadEvents();
 	}
 	
 	private boolean isValid() {
 		StringBuilder msg = new StringBuilder();
 		
-		return false;
+		if(cbxGifts.getValue().equals(null)) {
+			msg.append("Gift not selected");
+		}
+		
+		if(selectedEvent == null) {
+			if(msg.length() > 0) {
+				msg.append("\r\n");
+			}
+			msg.append("Event not selected");
+		}
+		
+		if(msg.length() > 0) {
+			Window.error("Validation", msg.toString());
+			return false;
+		}else {
+			return true;
+		}
 	}
 }

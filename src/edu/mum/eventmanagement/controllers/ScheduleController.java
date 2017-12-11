@@ -39,11 +39,19 @@ public class ScheduleController extends ControllerBase<Schedule> {
 		return eventRepository.getAll();
 	}
 	
+	public List<Event> getEventsWithoutPrize(){
+		return eventRepository.getEventsWithoutPrize();
+	}
+	
 	public List<Activity> getActivities(){
 		return activityRepository.getAll();
 	}
 	
 	public List<Gift> getGifts(){
 		return giftRepository.getAll();
+	}
+	
+	public void updateEvent(Event event) {
+		eventRepository.update(event);
 	}
 }
