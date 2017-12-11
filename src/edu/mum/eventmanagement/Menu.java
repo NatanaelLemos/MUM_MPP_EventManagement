@@ -1,6 +1,7 @@
 package edu.mum.eventmanagement;
 
 import edu.mum.eventmanagement.models.Host;
+import edu.mum.eventmanagement.models.Guest;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -97,8 +98,19 @@ public class Menu extends Application implements ISessionObserver {
     }
     
     @FXML protected void handleVoteAction(ActionEvent event) {
+    	
+    	if(
+    			(Session.getInstance().getUser() == null) || 
+    			(!Session.getInstance().getUser().hasRole(Guest.class))
+    		) {
+        		Window.error("Denied", "You don't have permission to access this function");
+        		return;
+        	}
+        	
     	Window advertisement = new Window("event/Vote", "Vote for the best", 900, 500);
     	advertisement.show();
+    	
+    	
     }
 
 	@Override

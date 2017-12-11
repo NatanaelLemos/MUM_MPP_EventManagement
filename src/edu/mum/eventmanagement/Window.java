@@ -51,7 +51,7 @@ public class Window extends Stage {
 		}
 	}
 	
-	static void close(Pane windowToClose) {
+	public static void close(Pane windowToClose) {
 		windowToClose.getScene().getWindow().hide();
 	}
 	

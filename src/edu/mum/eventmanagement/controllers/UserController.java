@@ -22,6 +22,18 @@ public class UserController {
 			userRepository.update(user);
 		}
 	}
+	
+	public void createGuest(User guest) {
+		User user = getUserByEmail(guest.getEmail());
+		
+		if(user == null) {
+			guest.addRole(new edu.mum.eventmanagement.models.Guest());
+			userRepository.add(guest);
+		}else {
+			user.addRole(new edu.mum.eventmanagement.models.Guest());
+			userRepository.update(user);
+		}
+	}
 		
 	public List<Country> getCountries(){
 		return countryRepository.getAll();

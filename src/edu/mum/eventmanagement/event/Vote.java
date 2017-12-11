@@ -2,9 +2,12 @@ package edu.mum.eventmanagement.event;
 
 import java.util.List;
 import edu.mum.eventmanagement.*;
+import edu.mum.eventmanagement.controllers.UserController;
 import edu.mum.eventmanagement.models.Activity;
 import edu.mum.eventmanagement.models.Event;
+import edu.mum.eventmanagement.models.Guest;
 import edu.mum.eventmanagement.models.Schedule;
+import edu.mum.eventmanagement.models.User;
 import edu.mum.eventmanagement.repositories.EventRepository;
 import edu.mum.eventmanagement.repositories.ScheduleRepository;
 import javafx.beans.property.SimpleStringProperty;
@@ -43,9 +46,12 @@ public class Vote {
 	
 	@FXML protected ToggleGroup toggleGr1 = new ToggleGroup();
 	@FXML protected void voteAction(ActionEvent event) {
+		UserController us = new UserController();
 		
 		Schedule sc = tblScheduler.getSelectionModel().getSelectedItem();
-		//sc.getVotes().add(Session.getInstance().getUser().getRoles())
+		Guest u = Session.getInstance().getUser().getRole(Guest.class);
+		sc.getVotes().add(u);
+		
 		
 		Window.alert("Event created", "Thanks for your Voted");
 	}
