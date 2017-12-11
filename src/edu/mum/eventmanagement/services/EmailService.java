@@ -14,8 +14,8 @@ import org.simplejavamail.mailer.config.TransportStrategy;
 
 public class EmailService {
 	private static String smtp = "smtp.gmail.com";
-    private static String emailFrom = "<<Email goes here>>";
-    private static String password = "<<Password goes here>>";
+	private static String emailFrom = "notthisguyagainanothertime@gmail.com";
+    private static String password = "P@55w0rd";
 	private static int port = 587;
 		
 	public static void sendAdvertisement(Advertisement ad) {
@@ -37,7 +37,9 @@ public class EmailService {
 			"<h1>This amazing event is going to happen near you</h1><br/>"+
 					"<h2>" + evt.getName() + "</h2><br />" +
 					"<p>" + evt.getDate().toString() + "</p>" +
-					"<p>at " +evt.getLocationName() + " (" + evt.getLocation().getAddress() + ")</p>";
+					"<p>at " +evt.getLocationName() + " (" + evt.getLocation().getAddress() + ")</p>"
+					+"<h1><font color=\"blue\">Please register to become Guest in the event and VOTE for the best performance.<font/></h1><br/>"
+					;
 			sendEmail(email, email, "Hello new guest", mailMsg, "");
 	}
 	

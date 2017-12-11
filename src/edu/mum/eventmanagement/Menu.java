@@ -59,8 +59,15 @@ public class Menu extends Application implements ISessionObserver {
 
     @FXML protected void handleApproveEventAction(ActionEvent eveent) {
     	
-    	Window createEvent = new Window("event/approveEvent", "Approve Event", 840, 550);
+    	if(
+    			(Session.getInstance().getUser() == null) || 
+    			(!Session.getInstance().getUser().hasRole(Approver.class))
+    		) {
+        		Window.error("Denied", "You don't have permission to access this function");
+        		return;
+        	}
     	
+    	Window createEvent = new Window("event/approveEvent", "Approve Event", 840, 550);	
     	createEvent.show();
     }
 
