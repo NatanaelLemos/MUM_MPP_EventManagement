@@ -5,8 +5,4 @@ import edu.mum.eventmanagement.repositories.GiftRepository;
 
 public class GiftController extends ControllerBase<Gift> {
 
-	public GiftController() {
-		super(new GiftRepository());
-	}
-
 }

@@ -10,10 +10,6 @@ public class AdvertisementController extends ControllerBase<Advertisement> {
 	
 	private EventRepository eventRepository = new EventRepository();
 	
-	public AdvertisementController() {
-		super(new AdvertisementRepository());
-	}
-	
 	public List<Event> getEvents(){
 		return eventRepository.getAll();
 	}

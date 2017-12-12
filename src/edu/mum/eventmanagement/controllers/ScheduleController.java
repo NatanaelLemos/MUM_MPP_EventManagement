@@ -14,10 +14,6 @@ public class ScheduleController extends ControllerBase<Schedule> {
 	private ActivityRepository activityRepository = new ActivityRepository();
 	private GiftRepository giftRepository = new GiftRepository();
 	
-	public ScheduleController() {
-		super(new ScheduleRepository());
-	}
-
 	@Override
 	public void create(Schedule schedule) {
 		schedule.getEvent().addSchedule(schedule);
