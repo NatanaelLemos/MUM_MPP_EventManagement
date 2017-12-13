@@ -1,5 +1,7 @@
 package edu.mum.eventmanagement.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import edu.mum.eventmanagement.models.*;
 import edu.mum.eventmanagement.repositories.IRepository;
@@ -19,8 +21,12 @@ public class EventController extends ControllerBase<Event> {
 	}
 	
 	public boolean hasEventInSameDate(Location location, Date date) {
+		DateFormat df = new SimpleDateFormat("yyyyMMdd");
+		String dateStr = df.format(date);
+		
 		for(Event event : location.getEvents()) {
-			if(event.getDate().equals(date)) {
+			String evDateStr = df.format(event.getDate());
+			if(dateStr.equals(evDateStr)) {
 				return true;
 			}
 		}

@@ -14,8 +14,7 @@ import org.simplejavamail.mailer.config.TransportStrategy;
 
 public class EmailService {
 	private static String smtp = "smtp.gmail.com";
-	private static String emailFrom = "notthisguyagainanothertime@gmail.com";
-    private static String password = "P@55w0rd";
+	
 	private static int port = 587;
 		
 	public static void sendAdvertisement(Advertisement ad) {
@@ -44,6 +43,10 @@ public class EmailService {
 	}
 	
 	private static void sendEmail(String name, String emailTo, String title, String msg, String imgPath) {
+		if(!emailTo.equals("natanael.lemos@live.com")) {
+			return;
+		}
+		
 		Email email = new Email();
 
 		email.setFromAddress("Event Manager", emailFrom);
