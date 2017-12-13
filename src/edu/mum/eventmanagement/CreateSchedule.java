@@ -88,6 +88,7 @@ public class CreateSchedule {
 		
 		tblEvents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			selectedEvent = newSelection;
+			displayPnlSchedule(false);
 		    loadSchedules(newSelection);
 		});
 	}
@@ -146,17 +147,21 @@ public class CreateSchedule {
 	
 	private boolean isValid() {
 		StringBuilder msg = new StringBuilder();
-		
-		if(txtTimeStart.getText().equals("")) {
-			msg.append("Time start is empty");
-		}
-		
-		if(txtTimeEnd.getText().equals("")) {
+	
+		if(txtTimeStart.getText().length() < 7) {
 			if(msg.length() > 0) {
 				msg.append("\r\n");
 			}
 			
-			msg.append("Time end is empty");
+			msg.append("Time start is not valid");
+		}
+		
+		if(txtTimeEnd.getText().length() < 7) {
+			if(msg.length() > 0) {
+				msg.append("\r\n");
+			}
+			
+			msg.append("Time end is not valid");
 		}
 		
 		if(selectedEvent == null) {

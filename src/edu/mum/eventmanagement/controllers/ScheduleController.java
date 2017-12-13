@@ -3,16 +3,14 @@ package edu.mum.eventmanagement.controllers;
 import java.util.List;
 
 import edu.mum.eventmanagement.models.*;
-import edu.mum.eventmanagement.repositories.ActivityRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
-import edu.mum.eventmanagement.repositories.GiftRepository;
-import edu.mum.eventmanagement.repositories.ScheduleRepository;
+import edu.mum.eventmanagement.repositories.IRepository;
 
 public class ScheduleController extends ControllerBase<Schedule> {
 
-	private EventRepository eventRepository = new EventRepository();
-	private ActivityRepository activityRepository = new ActivityRepository();
-	private GiftRepository giftRepository = new GiftRepository();
+	private IRepository<Event> eventRepository = IRepository.getRepository("Event");
+	private IRepository<Activity> activityRepository = IRepository.getRepository("Activity");
+	private IRepository<Gift> giftRepository = IRepository.getRepository("Gift");
 	
 	@Override
 	public void create(Schedule schedule) {
@@ -37,7 +35,7 @@ public class ScheduleController extends ControllerBase<Schedule> {
 	}
 	
 	public List<Event> getEventsWithoutPrize(){
-		return eventRepository.getEventsWithoutPrize();
+		return ((EventRepository)eventRepository).getEventsWithoutPrize();
 	}
 	
 	public List<Activity> getActivities(){

@@ -75,9 +75,7 @@ public class ApproveEvent {
         colEventLocation.setCellValueFactory(new PropertyValueFactory<Event, String>("locationName"));
         colEventState.setCellValueFactory(new PropertyValueFactory<Event, String>("stateName"));
         
-		
-        //EventRepository er = new EventRepository();
-        List<Event> events = eveRepo.getAll();
+        List<Event> events = eveRepo.getWaitingForApproval();
 		tblEvents.getItems().setAll(events);
 
 		tblEvents.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -164,8 +162,10 @@ public class ApproveEvent {
  		// update event
  		eveRepo.update(newEv);
  		
- 		List<Event> events = eveRepo.getAll();
-		tblEvents.getItems().setAll(events);
+ 		try {
+ 			List<Event> events = eveRepo.getWaitingForApproval();
+ 			tblEvents.getItems().setAll(events);
+ 		}catch(Exception e){/*some weird error occurring here*/}
 	}
 	
 	

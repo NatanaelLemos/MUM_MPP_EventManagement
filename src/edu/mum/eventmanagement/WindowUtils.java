@@ -1,8 +1,11 @@
 package edu.mum.eventmanagement;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -43,6 +46,16 @@ public final class WindowUtils {
 					textField.setText("");
 					return;
 				}
+			}
+			
+			if(Integer.parseInt(hour) > 12) {
+				textField.setText("");
+				return;
+			}
+			
+			if(Integer.parseInt(minute) > 59) {
+				textField.setText("");
+				return;
 			}
 			
 			dayTime = dayTime.toUpperCase();
@@ -121,6 +134,14 @@ public final class WindowUtils {
 			if (iYear < 2000 || iYear > 2099) {
 				textField.setText("");
 				return;
+			}
+			
+			try {
+				DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+				Date validDate = dateFormat.parse(text);
+			} catch (ParseException e) {
+				//If cannot parse to date, so it is invalid
+				text = "";
 			}
 		}
 

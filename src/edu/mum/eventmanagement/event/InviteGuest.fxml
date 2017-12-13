@@ -22,7 +22,7 @@
         <Font name="System Bold" size="14.0" />
       </font>
     </Label>
-    <Button fx:id="btnInvite" layoutX="549.0" layoutY="284.0" minHeight="19.000091552734375" mnemonicParsing="false" onAction="#inviteGuestAction" prefHeight="19.000091552734375" prefWidth="60.0" styleClass="primary" text="Invite" />
+    <Button fx:id="btnInvite" layoutX="549.0" layoutY="284.0" minHeight="19.000091552734375" mnemonicParsing="false" onAction="#inviteGuestAction" prefHeight="20.0" prefWidth="113.0" styleClass="primary" text="Invite" />
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@../../../../../../res/invite.png" />

@@ -2,11 +2,11 @@ package edu.mum.eventmanagement.controllers;
 
 import java.util.*;
 import edu.mum.eventmanagement.models.*;
+import edu.mum.eventmanagement.repositories.IRepository;
 import edu.mum.eventmanagement.repositories.EventRepository;
-import edu.mum.eventmanagement.repositories.LocationRepository;
 
 public class EventController extends ControllerBase<Event> {
-	private LocationRepository locationRepository = new LocationRepository();
+	private IRepository<Location> locationRepository = IRepository.getRepository("Location");
 
 	public List<Location> getLocations() {
 		return locationRepository.getAll();

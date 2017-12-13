@@ -76,18 +76,44 @@ public class CreateEvent {
 			msg.append("Event name is empty");
 		}
 		
-		if(txtDate.getText().equals("")) {
+		if(txtDate.getText().length() < 10) {
 			if(msg.length() > 0) {
 				msg.append("\r\n");
 			}
-			msg.append("Event date is empty");
+			msg.append("Event date is not valid");
 		}
 		
-		if(txtDueDate.getText().equals("")) {
+		if(txtDueDate.getText().length() < 10) {
 			if(msg.length() > 0) {
 				msg.append("\r\n");
 			}
-			msg.append("Event due date is empty");
+			msg.append("Event due date is not valid");
+		}
+		
+		if((txtDate.getText().length() == 10) && (txtDueDate.getText().length() == 10)) {
+			Date date = dateFormat.parse(txtDate.getText());
+			Date dueDate = dateFormat.parse(txtDueDate.getText());
+			
+			if(dueDate.compareTo(date) >= 0) {
+				if(msg.length() > 0) {
+					msg.append("\r\n");
+				}
+				msg.append("Due date should be before the event date");
+			}
+			
+			if((new Date()).compareTo(date) >= 0) {
+				if(msg.length() > 0) {
+					msg.append("\r\n");
+				}
+				msg.append("Event date should be after today");
+			}
+			
+			if((new Date()).compareTo(dueDate) >= 0) {
+				if(msg.length() > 0) {
+					msg.append("\r\n");
+				}
+				msg.append("Due date should be after today");
+			}
 		}
 
 		Location location = cbxLocation.getValue(); 		

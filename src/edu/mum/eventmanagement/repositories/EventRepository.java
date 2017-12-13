@@ -20,10 +20,19 @@ public class EventRepository extends RepositoryBase<Event> implements IRepositor
 	public List<Event> getExpiredDueDate(){
 		EntityManager em = HibernateUtil.getEntityManager();
 		
-		TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e WHERE e.state = :state and e.dueDate < :duedate", Event.class);
+		TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e WHERE e.state = :state and e.dueDate < :duedate and e.date > :date", Event.class);
 		query.setParameter("state", EventState.pending);
 		query.setParameter("duedate", new Date());
+		query.setParameter("date", new Date());
 		
+		return query.getResultList();
+	}
+	
+	public List<Event> getWaitingForApproval(){
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e WHERE e.state = :state", Event.class);
+		query.setParameter("state", EventState.locked);		
 		return query.getResultList();
 	}
 	
